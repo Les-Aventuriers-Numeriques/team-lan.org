@@ -28,10 +28,9 @@ Définissez les variables d'environnement suivantes ou créez un fichier `.env` 
 Configuration du `VirtualHost` :
 
 ```apacheconf
-ErrorDocument 401 /401.html
-ErrorDocument 403 /403.html
 ErrorDocument 404 /404.html
 ```
+
 ## Utilisation
 
 Utilisez `invoke --list` afin de lister les tâches [Invoke](https://www.pyinvoke.org/) disponibles.

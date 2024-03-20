@@ -1,7 +1,11 @@
 from staticjinja import Site
+from environs import Env
 from invoke import task
 import shutil
 import os
+
+env = Env()
+env.read_env()
 
 CONFIG = {
     'outpath': 'output',
@@ -43,4 +47,17 @@ def build(c):
 @task
 def publish(c):
     """Publie le site en production (via rsync)"""
-    pass
+    CONFIG.update({
+        'ssh_user': env.str('SSH_USER'),
+        'ssh_host': env.str('SSH_HOST'),
+        'ssh_port': 22,
+        'ssh_path': env.str('SSH_PATH'),
+    })
+
+    c.run(
+        'rsync --delete --exclude ".DS_Store" -pthrvz -c '
+        '-e "ssh -p {ssh_port}" '
+        '{} {ssh_user}@{ssh_host}:{ssh_path}'.format(
+            CONFIG['outpath'].rstrip('/') + '/', **CONFIG
+        )
+    )
