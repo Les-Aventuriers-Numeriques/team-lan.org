@@ -13,6 +13,28 @@ Le [site web principal](https://team-lan.com/) de la team Les Aventuriers Numér
 
 Clonez ce dépôt, puis le `pip install -r requirements.txt` habituel.
 
+## Configuration
+
+Définissez les variables d'environnement suivantes ou créez un fichier `.env` les contenant :
+
+| Nom              | Type | Requis ? | Défaut | Description                                |
+|------------------|------|----------|--------|--------------------------------------------|
+| `SSH_USER`       | str  | Non      |        | Nom d'utilisateur SSH pour le déploiement  |
+| `SSH_HOST`       | str  | Non      |        | Hôte cible du déploiement                  |
+| `SSH_PATH`       | str  | Non      |        | Chemin absolu du répertoire de déploiement |
+
+### Apache
+
+Configuration du `VirtualHost` :
+
+```apacheconf
+ErrorDocument 401 /401.html
+ErrorDocument 403 /403.html
+ErrorDocument 404 /404.html
+```
 ## Utilisation
 
 Utilisez `invoke --list` afin de lister les tâches [Invoke](https://www.pyinvoke.org/) disponibles.
+
+> [!NOTE]
+> `invoke publish` nécessite `rsync` (i.e un environnement Linux).

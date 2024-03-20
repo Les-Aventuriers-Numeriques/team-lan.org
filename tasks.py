@@ -41,6 +41,6 @@ def build(c):
 
 
 @task
-def deploy(c):
-    """Déploie en production (via rsync)"""
+def publish(c):
+    """Publie le site en production (via rsync)"""
     pass
