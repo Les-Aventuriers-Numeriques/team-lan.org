@@ -1,5 +1,7 @@
 CONFIG = {
     'outpath': 'output',
+    'static_dir': 'static',
+    'static_url_prefix': '/static',
     'games_being_played': [
         578080, # PUBG
         526870, # Satisfactory
@@ -10,5 +12,5 @@ CONFIG = {
         ('steam', 'https://steamcommunity.com/groups/Les-Aventuriers-Numeriques'),
         ('github', 'https://github.com/Les-Aventuriers-Numeriques'),
     ),
-    'serve_port': 8080
+    'serve_port': 8080,
 }

@@ -25,6 +25,7 @@ def build(c, watch: bool = False):
     """Génère le rendu du site"""
     print('Copie des fichiers statiques vers "{outpath}"...'.format(**CONFIG))
 
+    shutil.copy2('static/favicon.ico', os.path.join(CONFIG['outpath'], 'favicon.ico'))
     shutil.copytree('static/images', os.path.join(CONFIG['outpath'], 'static/images'))
 
     print('Génération du rendu dans vers "{outpath}"...'.format(**CONFIG))
@@ -40,8 +41,8 @@ def build(c, watch: bool = False):
         extensions=['webassets.ext.jinja2.AssetsExtension']
     )
 
-    assets_environment = AssetsEnvironment(directory=os.path.join(CONFIG['outpath'], 'static'), url='/static')
-    assets_environment.append_path('static')
+    assets_environment = AssetsEnvironment(directory=os.path.join(CONFIG['outpath'], CONFIG['static_dir']), url=CONFIG['static_url_prefix'])
+    assets_environment.append_path(CONFIG['static_dir'])
 
     site.env.assets_environment = assets_environment
 

@@ -1,10 +1,12 @@
 {% extends '_layout.html' %}
 
 {% block content %}
-    <img src="/static/images/logo.png">
+    <img src="/static/images/logo.png" alt="Logo de notre team">
 
     {% for appid in games_being_played %}
-        <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/{{ appid }}/header.jpg">
+        <a href="https://store.steampowered.com/app/{{ appid }}">
+            <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/{{ appid }}/header.jpg" alt="Illustration du jeu">
+        </a>
     {% endfor %}
 
     {% for name, url in social_links %}
