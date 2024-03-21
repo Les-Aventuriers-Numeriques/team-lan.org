@@ -2,6 +2,8 @@ CONFIG = {
     'output_dir': 'output',
     'static_dir': 'static',
     'static_url_prefix': '/static',
+    'site_name': 'Les Aventuriers Numériques',
+    'site_description': 'Une team multigaming francophone et conviviale',
     'games_being_played': [
         578080, # PUBG
         526870, # Satisfactory

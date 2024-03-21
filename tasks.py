@@ -1,10 +1,11 @@
-from jinja2 import Template
 from webassets import Environment as AssetsEnvironment
+from invoke import task, Context
+from markupsafe import Markup
 from staticjinja import Site
+from jinja2 import Template
 from config import CONFIG
 from environs import Env
 from pathlib import Path
-from invoke import task, Context
 import htmlmin
 import shutil
 import os
@@ -18,8 +19,8 @@ def _minify_html(site: Site, template: Template, **kwargs) -> None:
 
     os.makedirs(out.parent, exist_ok=True)
 
-    with open(str(out), 'w', encoding=site.encoding) as fp:
-        fp.write(
+    with open(str(out), 'w', encoding=site.encoding) as f:
+        f.write(
             htmlmin.minify(
                 site.get_template(template.name).render(**kwargs),
                 remove_optional_attribute_quotes=False,
@@ -27,6 +28,11 @@ def _minify_html(site: Site, template: Template, **kwargs) -> None:
                 remove_comments=True
             )
         )
+
+
+def _read_svg_icon(name: str) -> Markup:
+    with open(os.path.join('static', 'images', f'{name}.svg'), 'r') as f:
+        return Markup(f.read())
 
 
 @task
@@ -45,16 +51,24 @@ def build(c: Context, watch: bool = False, compress: bool = False) -> None:
     print('Copie des fichiers statiques vers "{output_dir}"...'.format(**CONFIG))
 
     shutil.copy2('static/favicon.ico', os.path.join(CONFIG['output_dir'], 'favicon.ico'))
-    shutil.copytree('static/images', os.path.join(CONFIG['output_dir'], 'static/images'))
+    shutil.copytree('static/images', os.path.join(CONFIG['output_dir'], 'static', 'images'))
 
     print('Génération du rendu dans vers "{output_dir}"...'.format(**CONFIG))
 
     site = Site.make_site(
         outpath=CONFIG['output_dir'],
+        mergecontexts=True,
+        env_globals={
+            'icon': _read_svg_icon,
+        },
         contexts=[
             ('index.html', {
                 'games_being_played': CONFIG['games_being_played'],
                 'social_links': CONFIG['social_links'],
+            }),
+            (r'.*\.html', {
+                'site_name': CONFIG['site_name'],
+                'site_description': CONFIG['site_description'],
             })
         ],
         rules=[
