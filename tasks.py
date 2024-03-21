@@ -32,7 +32,7 @@ def _minify_html(site: Site, template: Template, **kwargs) -> None:
 
 def _read_svg_icon(name: str) -> Markup:
     with open(os.path.join('static', 'images', f'{name}.svg'), 'r') as f:
-        return Markup(f.read())
+        return Markup(f'<span class="social-icon {name}">{f.read()}</span>')
 
 
 @task

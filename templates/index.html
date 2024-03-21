@@ -19,9 +19,9 @@
 
     <h2>Où c'est qu'on est</h2>
 
-    <p>
+    <div class="grid horizontal gap">
         {% for name, url in social_links %}
             <a href="{{ url }}">{{ icon(name) }}</a>
         {% endfor %}
-    </p>
+    </div>
 {% endblock %}

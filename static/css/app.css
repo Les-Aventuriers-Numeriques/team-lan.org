@@ -6,23 +6,57 @@
 }
 
 /************************************************************************
- * Icônes */
+ * Header */
 
-.discord-icon {
+/************************************************************************
+ * Icônes sociales */
 
+.social-icon {
+    display: inline-block;
 }
 
-.steam-icon {
-
+.social-icon > svg {
+    width: 3rem;
+    height: 3rem;
 }
 
-.github-icon {
+.social-icon.discord > svg {
+    color: #5865F2;
+}
 
+.social-icon.steam > svg {
+    color: #ffffff;
+}
+
+.social-icon.github > svg {
+    color: #c5d1de;
+}
+
+[data-theme="light"],
+:root:not([data-theme="dark"]) {
+    .social-icon.steam > svg {
+        color: #000000;
+    }
+
+    .social-icon.github > svg {
+        color: #181717;
+    }
 }
 
 /************************************************************************
- * Header */
+ * Mise en page */
 
+.grid {
+    display: flex;
+}
+
+.grid.horizontal {
+    flex-direction: row;
+}
+
+.grid.horizontal.gap {
+    column-gap: var(--pico-block-spacing-vertical);
+}
 
 /************************************************************************
  * Footer */
