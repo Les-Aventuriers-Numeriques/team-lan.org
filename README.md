@@ -29,11 +29,6 @@ Configuration du `VirtualHost` :
 
 ```apacheconf
 ErrorDocument 404 /404.html
-
-RewriteEngine On
-
-RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME}.html -f
-RewriteRule !.*\.html$ %{REQUEST_FILENAME}.html [L]
 ```
 
 ## Utilisation

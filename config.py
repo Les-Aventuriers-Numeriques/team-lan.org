@@ -1,5 +1,5 @@
 CONFIG = {
-    'outpath': 'output',
+    'output_dir': 'output',
     'static_dir': 'static',
     'static_url_prefix': '/static',
     'games_being_played': [
