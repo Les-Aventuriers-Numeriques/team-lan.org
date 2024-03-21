@@ -1,0 +1,7 @@
+{% extends '_layout.html' %}
+
+{% block content %}
+    {% for appid in games_being_played %}
+        <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/{{ appid }}/header.jpg">
+    {% endfor %}
+{% endblock %}

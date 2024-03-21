@@ -1,4 +1,5 @@
 from staticjinja import Site
+from config import CONFIG
 from environs import Env
 from invoke import task
 import shutil
@@ -6,15 +7,6 @@ import os
 
 env = Env()
 env.read_env()
-
-CONFIG = {
-    'outpath': 'output',
-    'games_being_played': [
-        578080, # PUBG
-        526870, # Satisfactory
-        504210, # SHENZHEN I/O
-    ]
-}
 
 
 @task
