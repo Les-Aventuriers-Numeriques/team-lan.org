@@ -1,3 +1,4 @@
+from webassets import Environment as AssetsEnvironment
 from staticjinja import Site
 from config import CONFIG
 from environs import Env
@@ -12,7 +13,7 @@ env.read_env()
 @task
 def clean(c):
     """Supprime les fichiers générés"""
-    print('Suppression et recréation du dossier "{}"...'.format(CONFIG['outpath']))
+    print('Suppression et recréation de "{outpath}"...'.format(**CONFIG))
 
     if os.path.isdir(CONFIG['outpath']):
         shutil.rmtree(CONFIG['outpath'])
@@ -20,20 +21,37 @@ def clean(c):
 
 
 @task
-def build(c):
-    """Génère le rendu statique du site"""
-    print('Génération du rendu dans le dossier "{}"...'.format(CONFIG['outpath']))
+def build(c, watch: bool = False):
+    """Génère le rendu du site"""
+    print('Copie des fichiers statiques vers "{outpath}"...'.format(**CONFIG))
+
+    shutil.copytree('static/images', os.path.join(CONFIG['outpath'], 'static/images'))
+
+    print('Génération du rendu dans vers "{outpath}"...'.format(**CONFIG))
 
     site = Site.make_site(
         outpath=CONFIG['outpath'],
         contexts=[
             ('index.html', {
-                'games_being_played': CONFIG['games_being_played']
+                'games_being_played': CONFIG['games_being_played'],
+                'social_links': CONFIG['social_links'],
             })
-        ]
+        ],
+        extensions=['webassets.ext.jinja2.AssetsExtension']
     )
 
-    site.render()
+    assets_environment = AssetsEnvironment(directory=os.path.join(CONFIG['outpath'], 'static'), url='/static')
+    assets_environment.append_path('static')
+
+    site.env.assets_environment = assets_environment
+
+    site.render(watch)
+
+
+@task
+def serve(c):
+    """Permet de servir le site via HTTP"""
+    c.run('python -m http.server -d {outpath} {serve_port}'.format(**CONFIG))
 
 
 @task

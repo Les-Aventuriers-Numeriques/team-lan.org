@@ -7,6 +7,10 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{% block description %}Une team multigaming francophone et conviviale{% endblock %}">
+
+    {% assets filters="cssutils", output="css/app.min.css", "css/app.css" %}
+        <link rel="stylesheet" href="{{ ASSET_URL }}">
+    {% endassets %}
 </head>
 <body>
     {% block content %}{% endblock %}
