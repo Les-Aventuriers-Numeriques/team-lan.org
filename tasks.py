@@ -62,7 +62,8 @@ def clean(c: Context) -> None:
 
     if os.path.isdir(CONFIG['output_dir']):
         shutil.rmtree(CONFIG['output_dir'])
-        os.makedirs(CONFIG['output_dir'])
+
+    os.makedirs(CONFIG['output_dir'], exist_ok=True)
 
 
 @task
