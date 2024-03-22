@@ -16,11 +16,12 @@ env.read_env()
 CONFIG.update({
     'base_url': env.str('BASE_URL', CONFIG['base_url']),
     'append_html_to_urls': env.bool('APPEND_HTML_TO_URLS', CONFIG['append_html_to_urls']),
-    'compress_html': env.bool('COMPRESS_HTML', CONFIG['compress_html']),
+    'minify_html': env.bool('MINIFY_HTML', CONFIG['minify_html']),
 })
 
 
 def _minify_html(site: Site, template: Template, **kwargs) -> None:
+    """Minifie le HTML du rendu d'un template Jinja"""
     out = site.outpath / Path(template.name).with_suffix('.html')
 
     os.makedirs(out.parent, exist_ok=True)
@@ -37,6 +38,7 @@ def _minify_html(site: Site, template: Template, **kwargs) -> None:
 
 
 def _build_static_url(path: str, absolute: bool = False) -> str:
+    """Construit une URL vers un fichier statique"""
     url = CONFIG['base_url'].rstrip('/') + '/' if absolute else '/'
     url += path.lstrip('/')
 
@@ -44,6 +46,7 @@ def _build_static_url(path: str, absolute: bool = False) -> str:
 
 
 def _build_url(path: str, absolute: bool = False) -> str:
+    """Pareil que `_build_static_url()`, sauf que ça rajoute `.html` à la fin si configuré comme tel"""
     url = _build_static_url(path, absolute)
 
     if CONFIG['append_html_to_urls']:
@@ -92,7 +95,7 @@ def build(c: Context, watch: bool = False) -> None:
         ],
         rules=[
             (r'.*\.html', _minify_html)
-        ] if CONFIG['compress_html'] else None,
+        ] if CONFIG['minify_html'] else None,
         extensions=['webassets.ext.jinja2.AssetsExtension']
     )
 

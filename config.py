@@ -1,7 +1,7 @@
 CONFIG = {
     'base_url': 'http://localhost:8080/',
     'append_html_to_urls': True,
-    'compress_html': False,
+    'minify_html': False,
     'output_dir': 'output',
     'static_dir': 'static',
     'site_name': 'Les Aventuriers Numériques',
@@ -12,7 +12,7 @@ CONFIG = {
         504210, # SHENZHEN I/O
     ],
     'social_links': (
-        ('discord', 'https://discord.team-lan.com/'),
+        ('discord', 'https://discord.team-lan.org/'),
         ('steam', 'https://steamcommunity.com/groups/Les-Aventuriers-Numeriques'),
         ('github', 'https://github.com/Les-Aventuriers-Numeriques'),
     ),

@@ -1,6 +1,6 @@
 # Les Aventuriers Numériques / Site principal
 
-Le [site web principal](https://team-lan.com/) de la team Les Aventuriers Numériques.
+Le [site web principal](https://team-lan.org/) de la team Les Aventuriers Numériques.
 
 [![Publication](https://github.com/Les-Aventuriers-Numeriques/site-principal/actions/workflows/publish.yml/badge.svg)](https://github.com/Les-Aventuriers-Numeriques/site-principal/actions/workflows/publish.yml)
 
@@ -21,7 +21,7 @@ Définissez les variables d'environnement suivantes ou créez un fichier `.env` 
 |-----------------------|------|----------|---------------------------------|--------------------------------------------|
 | `BASE_URL`            | str  | Non      | `CONFIG['base_url']`            | URL de base du site pour le déploiement    |
 | `APPEND_HTML_TO_URLS` | bool | Non      | `CONFIG['append_html_to_urls']` | Ajout de `.html` à la fin des URLs ou non  |
-| `COMPRESS_HTML`       | bool | Non      | `CONFIG['compress_html']`       | Compression ou non de l'HTML résultant     |
+| `MINIFY_HTML`         | bool | Non      | `CONFIG['minify_html']`         | Minification ou non de l'HTML résultant    |
 | `SSH_USER`            | str  | Non      |                                 | Nom d'utilisateur SSH pour le déploiement  |
 | `SSH_HOST`            | str  | Non      |                                 | Hôte cible du déploiement                  |
 | `SSH_PATH`            | str  | Non      |                                 | Chemin absolu du répertoire de déploiement |
