@@ -1,6 +1,6 @@
 from webassets import Environment as AssetsEnvironment
 from invoke import task, Context
-from markupsafe import Markup
+from datetime import datetime
 from staticjinja import Site
 from jinja2 import Template
 from config import CONFIG
@@ -12,6 +12,12 @@ import os
 
 env = Env()
 env.read_env()
+
+CONFIG.update({
+    'base_url': env.str('BASE_URL', CONFIG['base_url']),
+    'append_html_to_urls': env.bool('APPEND_HTML_TO_URLS', CONFIG['append_html_to_urls']),
+    'compress_html': env.bool('COMPRESS_HTML', CONFIG['compress_html']),
+})
 
 
 def _minify_html(site: Site, template: Template, **kwargs) -> None:
@@ -30,9 +36,20 @@ def _minify_html(site: Site, template: Template, **kwargs) -> None:
         )
 
 
-def _read_svg_icon(name: str) -> Markup:
-    with open(os.path.join('static', 'images', f'{name}.svg'), 'r') as f:
-        return Markup(f'<span class="social-icon {name}">{f.read()}</span>')
+def _build_static_url(path: str, absolute: bool = False) -> str:
+    url = CONFIG['base_url'].rstrip('/') + '/' if absolute else '/'
+    url += path.lstrip('/')
+
+    return url
+
+
+def _build_url(path: str, absolute: bool = False) -> str:
+    url = _build_static_url(path, absolute)
+
+    if CONFIG['append_html_to_urls']:
+        url += '.html'
+
+    return url
 
 
 @task
@@ -46,38 +63,40 @@ def clean(c: Context) -> None:
 
 
 @task
-def build(c: Context, watch: bool = False, compress: bool = False) -> None:
+def build(c: Context, watch: bool = False) -> None:
     """Génère le rendu du site"""
     print('Copie des fichiers statiques vers "{output_dir}"...'.format(**CONFIG))
 
     shutil.copy2('static/favicon.ico', os.path.join(CONFIG['output_dir'], 'favicon.ico'))
-    shutil.copytree('static/images', os.path.join(CONFIG['output_dir'], 'static', 'images'))
+    shutil.copytree('static/images', os.path.join(CONFIG['output_dir'], 'images'))
 
-    print('Génération du rendu dans vers "{output_dir}"...'.format(**CONFIG))
+    print('Génération du rendu vers "{output_dir}"...'.format(**CONFIG))
 
     site = Site.make_site(
         outpath=CONFIG['output_dir'],
         mergecontexts=True,
         env_globals={
-            'icon': _read_svg_icon,
+            'url': _build_url,
+            'static_url': _build_static_url,
         },
         contexts=[
             ('index.html', {
                 'games_being_played': CONFIG['games_being_played'],
-                'social_links': CONFIG['social_links'],
             }),
             (r'.*\.html', {
+                'social_links': CONFIG['social_links'],
                 'site_name': CONFIG['site_name'],
                 'site_description': CONFIG['site_description'],
+                'current_year': datetime.now().year,
             })
         ],
         rules=[
             (r'.*\.html', _minify_html)
-        ] if compress else None,
+        ] if CONFIG['compress_html'] else None,
         extensions=['webassets.ext.jinja2.AssetsExtension']
     )
 
-    assets_environment = AssetsEnvironment(directory=os.path.join(CONFIG['output_dir'], CONFIG['static_dir']), url=CONFIG['static_url_prefix'])
+    assets_environment = AssetsEnvironment(directory=CONFIG['output_dir'], url='/')
     assets_environment.append_path(CONFIG['static_dir'])
 
     site.env.assets_environment = assets_environment

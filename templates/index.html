@@ -1,27 +1,26 @@
 {% extends '_layout.html' %}
 
 {% block content %}
-    <p class="text-center">
-        <img src="/static/images/logo.png" alt="Logo de notre team">
-    </p>
+    <section>
+        <p class="text-center">
+            <img src="{{ static_url('images/logo.png') }}" alt="Logo de notre team">
+        </p>
 
-    <p>
-     Lorem Elsass ipsum gal ac Oberschaeffolsheim chambon kartoffelsalad bredele tchao bissame quam, DNA, non Carola Wurschtsalad Salu bissame rossbolla Gal ! picon bière rhoncus auctor, vielmols, bissame turpis pellentesque elementum gewurztraminer messti de Bischheim lotto-owe réchime blottkopf, senectus purus hopla mollis und elit dignissim hopla non flammekueche Pellentesque sit schpeck gravida libero. sit suspendisse libero, météor Richard Schirmeck hopla ornare turpis, sed eget salu Miss Dahlias Gal. mänele tellus tellus Chulien  semper ornare Strasbourg ftomi!
-    </p>
+        <p>
+         Lorem Elsass ipsum gal ac Oberschaeffolsheim chambon kartoffelsalad bredele tchao bissame quam, DNA, non Carola Wurschtsalad Salu bissame rossbolla Gal ! picon bière rhoncus auctor, vielmols, bissame turpis pellentesque elementum gewurztraminer messti de Bischheim lotto-owe réchime blottkopf, senectus purus hopla mollis und elit dignissim hopla non flammekueche Pellentesque sit schpeck gravida libero. sit suspendisse libero, météor Richard Schirmeck hopla ornare turpis, sed eget salu Miss Dahlias Gal. mänele tellus tellus Chulien  semper ornare Strasbourg ftomi!
+        </p>
+    </section>
 
-    <h2>À quoi qu'on joue</h2>
-
-    {% for appid in games_being_played %}
-        <a href="https://store.steampowered.com/app/{{ appid }}">
-            <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/{{ appid }}/header.jpg" alt="Illustration du jeu">
-        </a>
-    {% endfor %}
-
-    <h2>Où c'est qu'on est</h2>
-
-    <div class="grid horizontal gap">
-        {% for name, url in social_links %}
-            <a href="{{ url }}">{{ icon(name) }}</a>
-        {% endfor %}
-    </div>
+    <article>
+        <header>
+            En ce moment, on joue à...
+        </header>
+        <div>
+            {% for appid in games_being_played %}
+                <a href="https://store.steampowered.com/app/{{ appid }}">
+                    <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/{{ appid }}/header.jpg" alt="Illustration du jeu">
+                </a>
+            {% endfor %}
+        </div>
+    </article>
 {% endblock %}

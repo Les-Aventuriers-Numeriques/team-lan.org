@@ -1,7 +1,9 @@
 CONFIG = {
+    'base_url': 'http://localhost:8080/',
+    'append_html_to_urls': True,
+    'compress_html': False,
     'output_dir': 'output',
     'static_dir': 'static',
-    'static_url_prefix': '/static',
     'site_name': 'Les Aventuriers Numériques',
     'site_description': 'Une team multigaming francophone et conviviale',
     'games_being_played': [

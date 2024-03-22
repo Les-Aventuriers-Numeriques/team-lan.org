@@ -6,61 +6,34 @@
 }
 
 /************************************************************************
- * Header */
+ * En-tête */
+
+header a {
+    text-decoration: none;
+}
 
 /************************************************************************
- * Icônes sociales */
+ * Pied de page */
 
-.social-icon {
-    display: inline-block;
-}
-
-.social-icon > svg {
-    width: 3rem;
-    height: 3rem;
-}
-
-.social-icon.discord > svg {
+footer .bi-discord {
     color: #5865F2;
 }
 
-.social-icon.steam > svg {
+footer .bi-steam {
     color: #ffffff;
 }
 
-.social-icon.github > svg {
+footer .bi-github {
     color: #c5d1de;
 }
 
 [data-theme="light"],
 :root:not([data-theme="dark"]) {
-    .social-icon.steam > svg {
+    footer .bi-steam {
         color: #000000;
     }
 
-    .social-icon.github > svg {
+    footer .bi-github {
         color: #181717;
     }
-}
-
-/************************************************************************
- * Mise en page */
-
-.grid {
-    display: flex;
-}
-
-.grid.horizontal {
-    flex-direction: row;
-}
-
-.grid.horizontal.gap {
-    column-gap: var(--pico-block-spacing-vertical);
-}
-
-/************************************************************************
- * Footer */
-
-footer {
-    font-size: medium;
 }
