@@ -34,5 +34,6 @@ body > header a {
  * Pied de page */
 
 body > footer {
-
+    display: flex;
+    column-gap: var(--pico-block-spacing-vertical);
 }
