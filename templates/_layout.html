@@ -9,6 +9,15 @@
     <meta name="color-scheme" content="light dark">
     <meta name="description" content="{% block description %}{{ site_description }}{% endblock %}">
 
+    <meta property="og:type" content="page">
+    <meta property="og:url" content="{% block canonical_url %}{% endblock %}">
+    <meta property="og:site_name" content="{{ site_name }}">
+    <meta property="og:title" content="{{ self.title() or site_name }}">
+    <meta property="og:description" content="{{ self.description() }}">
+    <meta property="og:image" content="{{ static_url('images/logo_256.png', absolute=True) }}">
+    <meta property="og:locale" content="fr_FR">
+    <link rel="canonical" href="{{ self.canonical_url() }}">
+
     <link rel="icon" href="{{ static_url('favicon.ico') }}" sizes="32x32 48x48">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.0.6/css/pico.classless.orange.min.css">

@@ -29,7 +29,7 @@ CONFIG = {
         'images',
     ],
     'contexts': [
-        ('index.html', {
+        (r'index\.html', {
             'games_being_played': games_being_played,
         }),
         (r'.*\.html', {

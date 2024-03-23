@@ -37,7 +37,7 @@ def build_url(path: str, absolute: bool = False) -> str:
     """Pareil que `_build_static_url()`, sauf que ça rajoute `.html` à la fin si configuré comme tel"""
     url = build_static_url(path, absolute)
 
-    if CONFIG['append_html_to_urls']:
+    if path and CONFIG['append_html_to_urls']:
         url += '.html'
 
     return url
