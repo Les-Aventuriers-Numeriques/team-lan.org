@@ -1,12 +1,7 @@
-from webassets import Environment as AssetsEnvironment
 from invoke import task, Context
-from datetime import datetime
-from staticjinja import Site
-from jinja2 import Template
 from config import CONFIG
 from environs import Env
-from pathlib import Path
-import htmlmin
+import helpers
 import shutil
 import os
 
@@ -18,41 +13,6 @@ CONFIG.update({
     'append_html_to_urls': env.bool('APPEND_HTML_TO_URLS', CONFIG['append_html_to_urls']),
     'minify_html': env.bool('MINIFY_HTML', CONFIG['minify_html']),
 })
-
-
-def _minify_html(site: Site, template: Template, **kwargs) -> None:
-    """Minifie le HTML du rendu d'un template Jinja"""
-    out = site.outpath / Path(template.name).with_suffix('.html')
-
-    os.makedirs(out.parent, exist_ok=True)
-
-    with open(str(out), 'w', encoding=site.encoding) as f:
-        f.write(
-            htmlmin.minify(
-                site.get_template(template.name).render(**kwargs),
-                remove_optional_attribute_quotes=False,
-                remove_empty_space=True,
-                remove_comments=True
-            )
-        )
-
-
-def _build_static_url(path: str, absolute: bool = False) -> str:
-    """Construit une URL vers un fichier statique"""
-    url = CONFIG['base_url'].rstrip('/') + '/' if absolute else '/'
-    url += path.lstrip('/')
-
-    return url
-
-
-def _build_url(path: str, absolute: bool = False) -> str:
-    """Pareil que `_build_static_url()`, sauf que ça rajoute `.html` à la fin si configuré comme tel"""
-    url = _build_static_url(path, absolute)
-
-    if CONFIG['append_html_to_urls']:
-        url += '.html'
-
-    return url
 
 
 @task
@@ -71,41 +31,11 @@ def build(c: Context, watch: bool = False) -> None:
     """Génère le rendu du site"""
     print('Copie des fichiers statiques vers "{output_dir}"...'.format(**CONFIG))
 
-    shutil.copy2('static/favicon.ico', os.path.join(CONFIG['output_dir'], 'favicon.ico'))
-    shutil.copytree('static/images', os.path.join(CONFIG['output_dir'], 'images'))
+    helpers.copy_static_assets()
 
     print('Génération du rendu vers "{output_dir}"...'.format(**CONFIG))
 
-    site = Site.make_site(
-        outpath=CONFIG['output_dir'],
-        mergecontexts=True,
-        env_globals={
-            'url': _build_url,
-            'static_url': _build_static_url,
-        },
-        contexts=[
-            ('index.html', {
-                'games_being_played': CONFIG['games_being_played'],
-            }),
-            (r'.*\.html', {
-                'social_links': CONFIG['social_links'],
-                'site_name': CONFIG['site_name'],
-                'site_description': CONFIG['site_description'],
-                'current_year': datetime.now().year,
-            })
-        ],
-        rules=[
-            (r'.*\.html', _minify_html)
-        ] if CONFIG['minify_html'] else None,
-        extensions=['webassets.ext.jinja2.AssetsExtension']
-    )
-
-    assets_environment = AssetsEnvironment(directory=CONFIG['output_dir'], url='/')
-    assets_environment.append_path(CONFIG['static_dir'])
-
-    site.env.assets_environment = assets_environment
-
-    site.render(watch)
+    helpers.create_site_builder().render(watch)
 
 
 @task
