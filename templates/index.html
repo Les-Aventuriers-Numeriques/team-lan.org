@@ -13,8 +13,8 @@
         <header><i class="bi bi-pc-display"></i> En ce moment, on joue à...</header>
 
         <div class="games">
-            {% for appid in games_being_played %}
-                <a href="https://store.steampowered.com/app/{{ appid }}"><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/{{ appid }}/capsule_231x87.jpg" alt="Illustration du jeu"></a>
+            {% for appid, appname in games_being_played %}
+                <a href="https://store.steampowered.com/app/{{ appid }}"><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/{{ appid }}/capsule_231x87.jpg" alt="Illustration {{ appname }}" title="{{ appname }}"></a>
             {% endfor %}
         </div>
     </article>

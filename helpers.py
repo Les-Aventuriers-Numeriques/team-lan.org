@@ -1,5 +1,4 @@
 from webassets import Environment as AssetsEnvironment
-from datetime import datetime
 from staticjinja import Site
 from jinja2 import Template
 from config import CONFIG
@@ -74,17 +73,7 @@ def create_site_builder() -> Site:
             'url': build_url,
             'static_url': build_static_url,
         },
-        contexts=[
-            ('index.html', {
-                'games_being_played': CONFIG['games_being_played'],
-            }),
-            (r'.*\.html', {
-                'social_links': CONFIG['social_links'],
-                'site_name': CONFIG['site_name'],
-                'site_description': CONFIG['site_description'],
-                'current_year': datetime.now().year,
-            })
-        ],
+        contexts=CONFIG['contexts'],
         rules=[
             (r'.*\.html', minify_html)
         ] if CONFIG['minify_html'] else None,
