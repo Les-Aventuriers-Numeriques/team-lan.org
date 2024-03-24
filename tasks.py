@@ -62,7 +62,7 @@ def publish(c: Context) -> None:
     CONFIG.update({
         'ssh_user': env.str('SSH_USER'),
         'ssh_host': env.str('SSH_HOST'),
-        'ssh_port': env.int('SSH_HOST', 22),
+        'ssh_port': env.int('SSH_PORT', 22),
         'ssh_path': env.str('SSH_PATH'),
     })
 

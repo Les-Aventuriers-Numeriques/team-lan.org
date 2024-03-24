@@ -24,6 +24,7 @@ Définissez les variables d'environnement suivantes ou créez un fichier `.env` 
 | `REMOVE_HTML_EXTENSION` | bool | Non      | `CONFIG['remove_html_extension']` | Supprime ou non l'extension' `.html` des URLs générées                    |
 | `SSH_USER`              | str  | Non      |                                   | Nom d'utilisateur SSH pour le déploiement                                 |
 | `SSH_HOST`              | str  | Non      |                                   | Hôte cible du déploiement                                                 |
+| `SSH_PORT`              | int  | Non      | `22`                              | Port de l'hôte du déploiement                                             |
 | `SSH_PATH`              | str  | Non      |                                   | Chemin absolu du répertoire de déploiement                                |
 
 ### Apache
