@@ -18,8 +18,7 @@ site_description = 'Une team multigaming francophone et conviviale'
 CONFIG = {
     'serve_port': 8080,
     'base_url': 'http://localhost:8080/',
-    'append_html_to_urls': True,
-    'minify_html': False,
+    'minify_xml': False,
     'output_dir': 'output',
     'static_dir': 'static',
     'static_files_to_copy': [

@@ -33,6 +33,5 @@ jobs:
           SSH_PATH: ${{ vars.SSH_PATH }}
           SSH_USER: ${{ vars.SSH_USER }}
           BASE_URL: ${{ vars.BASE_URL }}
-          APPEND_HTML_TO_URLS: ${{ vars.APPEND_HTML_TO_URLS }}
-          MINIFY_HTML: ${{ vars.MINIFY_HTML }}
+          MINIFY_XML: ${{ vars.MINIFY_XML }}
         run: invoke clean build publish

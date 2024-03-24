@@ -2,19 +2,18 @@ from webassets import Environment as AssetsEnvironment
 from staticjinja import Site
 from jinja2 import Template
 from config import CONFIG
-from pathlib import Path
 import htmlmin
 import shutil
 import os
 
 
-def minify_html(site: Site, template: Template, **kwargs) -> None:
-    """Minifie le HTML du rendu d'un template Jinja"""
-    out = site.outpath / Path(template.name).with_suffix('.html')
+def minify_xml(site: Site, template: Template, **kwargs) -> None:
+    """Minifie le rendu d'un template Jinja XML (et par extension, HTML également)"""
+    out = os.path.join(site.outpath, template.name)
 
-    os.makedirs(out.parent, exist_ok=True)
+    os.makedirs(os.path.dirname(out), exist_ok=True)
 
-    with open(str(out), 'w', encoding=site.encoding) as f:
+    with open(out, 'w', encoding=site.encoding) as f:
         f.write(
             htmlmin.minify(
                 site.get_template(template.name).render(**kwargs),
@@ -25,20 +24,10 @@ def minify_html(site: Site, template: Template, **kwargs) -> None:
         )
 
 
-def build_static_url(path: str, absolute: bool = False) -> str:
-    """Construit une URL vers un fichier statique"""
+def build_url(path: str, absolute: bool = False) -> str:
+    """Construit une URL vers un fichier"""
     url = CONFIG['base_url'].rstrip('/') + '/' if absolute else '/'
     url += path.lstrip('/')
-
-    return url
-
-
-def build_url(path: str, absolute: bool = False) -> str:
-    """Pareil que `_build_static_url()`, sauf que ça rajoute `.html` à la fin si configuré comme tel"""
-    url = build_static_url(path, absolute)
-
-    if path and CONFIG['append_html_to_urls']:
-        url += '.html'
 
     return url
 
@@ -71,12 +60,11 @@ def create_site_builder() -> Site:
         mergecontexts=True,
         env_globals={
             'url': build_url,
-            'static_url': build_static_url,
         },
         contexts=CONFIG['contexts'],
         rules=[
-            (r'.*\.html', minify_html)
-        ] if CONFIG['minify_html'] else None,
+            (r'.*\.(html|xml)', minify_xml)
+        ] if CONFIG['minify_xml'] else None,
         extensions=['webassets.ext.jinja2.AssetsExtension']
     )
 

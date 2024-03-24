@@ -10,8 +10,7 @@ env.read_env()
 
 CONFIG.update({
     'base_url': env.str('BASE_URL', CONFIG['base_url']),
-    'append_html_to_urls': env.bool('APPEND_HTML_TO_URLS', CONFIG['append_html_to_urls']),
-    'minify_html': env.bool('MINIFY_HTML', CONFIG['minify_html']),
+    'minify_xml': env.bool('MINIFY_XML', CONFIG['minify_xml']),
 })
 
 

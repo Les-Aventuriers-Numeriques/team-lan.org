@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://epoc.fr/static/sitemap.xml
