@@ -17,13 +17,14 @@ Clonez ce dépôt, puis le `pip install -r requirements.txt` habituel.
 
 Définissez les variables d'environnement suivantes ou créez un fichier `.env` les contenant :
 
-| Nom          | Type | Requis ? | Défaut                 | Description                                                               |
-|--------------|------|----------|------------------------|---------------------------------------------------------------------------|
-| `BASE_URL`   | str  | Non      | `CONFIG['base_url']`   | Protocole et domaine de base pour les URLs absolues                       |
-| `MINIFY_XML` | bool | Non      | `CONFIG['minify_xml']` | Minification ou non de l'XML (et par extension, HTML également) résultant |
-| `SSH_USER`   | str  | Non      |                        | Nom d'utilisateur SSH pour le déploiement                                 |
-| `SSH_HOST`   | str  | Non      |                        | Hôte cible du déploiement                                                 |
-| `SSH_PATH`   | str  | Non      |                        | Chemin absolu du répertoire de déploiement                                |
+| Nom                     | Type | Requis ? | Défaut                            | Description                                                               |
+|-------------------------|------|----------|-----------------------------------|---------------------------------------------------------------------------|
+| `BASE_URL`              | str  | Non      | `CONFIG['base_url']`              | Protocole et domaine de base pour les URLs absolues                       |
+| `MINIFY_XML`            | bool | Non      | `CONFIG['minify_xml']`            | Minification ou non de l'XML (et par extension, HTML également) résultant |
+| `REMOVE_HTML_EXTENSION` | bool | Non      | `CONFIG['remove_html_extension']` | Supprime ou non l'extension' `.html` des URLs générées                    |
+| `SSH_USER`              | str  | Non      |                                   | Nom d'utilisateur SSH pour le déploiement                                 |
+| `SSH_HOST`              | str  | Non      |                                   | Hôte cible du déploiement                                                 |
+| `SSH_PATH`              | str  | Non      |                                   | Chemin absolu du répertoire de déploiement                                |
 
 ### Apache
 

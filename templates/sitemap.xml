@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>{{ url('', absolute=True) }}</loc>
+        <loc>{{ url('/', absolute=True) }}</loc>
     </url>
     <url>
-        <loc>{{ url('lan', absolute=True) }}</loc>
+        <loc>{{ url('/lan.html', absolute=True) }}</loc>
     </url>
 </urlset>

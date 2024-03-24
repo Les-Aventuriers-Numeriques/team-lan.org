@@ -1,10 +1,10 @@
 {% extends '_layout.html' %}
 
-{% block canonical_url %}{{ url('', absolute=True) }}{% endblock %}
+{% block canonical_url %}{{ url('/', absolute=True) }}{% endblock %}
 
 {% block content %}
     <p class="text-center">
-        <img src="{{ url('images/logo_256.png') }}" alt="Logo de notre team">
+        <img src="{{ url('/images/logo_256.png') }}" alt="Logo de notre team">
     </p>
 
     <p>
