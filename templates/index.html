@@ -2,14 +2,16 @@
 
 {% block canonical_url %}{{ url('/', absolute=True) }}{% endblock %}
 
+{% block cssfiles %}
+    {% assets 'css_index' %}<link rel="stylesheet" href="{{ ASSET_URL }}">{% endassets %}
+{% endblock %}
+
 {% block content %}
     <p class="text-center">
         <img src="{{ url('/images/logo_256.png') }}" alt="Logo de notre team">
     </p>
 
-    <p>
-        Lorem Elsass ipsum gal ac Oberschaeffolsheim chambon kartoffelsalad bredele tchao bissame quam, DNA, non Carola Wurschtsalad Salu bissame rossbolla Gal ! picon bière rhoncus auctor, vielmols, bissame turpis pellentesque elementum gewurztraminer messti de Bischheim lotto-owe réchime blottkopf, senectus purus hopla mollis und elit dignissim hopla non flammekueche Pellentesque sit schpeck gravida libero. sit suspendisse libero, météor Richard Schirmeck hopla ornare turpis, sed eget salu Miss Dahlias Gal. mänele tellus tellus Chulien  semper ornare Strasbourg ftomi!
-    </p>
+    {{ lipsum(3) }}
 
     <article>
         <header><i class="bi bi-pc-display"></i> En ce moment, on joue à...</header>

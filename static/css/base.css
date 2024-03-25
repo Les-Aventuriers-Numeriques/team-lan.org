@@ -6,24 +6,6 @@
 }
 
 /************************************************************************
- * Liste des jeux */
-
-body > main .games {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    column-gap: var(--pico-block-spacing-vertical);
-    row-gap: var(--pico-block-spacing-horizontal);
-}
-
-body > main .games > * {
-    justify-self: center;
-}
-
-body > main .games img {
-    border-radius: var(--pico-border-radius);
-}
-
-/************************************************************************
  * En-tête */
 
 body > header a {

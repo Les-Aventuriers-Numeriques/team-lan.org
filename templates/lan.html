@@ -6,6 +6,10 @@
 
 {% block canonical_url %}{{ url('/lan.html', absolute=True) }}{% endblock %}
 
+{% block cssfiles %}
+    {% assets 'css_base' %}<link rel="stylesheet" href="{{ ASSET_URL }}">{% endassets %}
+{% endblock %}
+
 {% block content %}
 
 {% endblock %}

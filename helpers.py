@@ -1,5 +1,5 @@
 from webassets import Environment as AssetsEnvironment
-from typing import List, Tuple, Any
+from typing import List, Tuple, Any, Dict
 from staticjinja import Site
 from jinja2 import Template
 import htmlmin
@@ -47,6 +47,7 @@ def create_site_builder(
         output_dir: str,
         static_dir: str,
         contexts: List[Tuple[str, dict[str, Any]]],
+        assets_bundles: List[Tuple[str, Tuple[str,...], Dict[str, str]]],
         minify_xml: bool = False,
         remove_html_extension: bool = False
 ) -> Site:
@@ -71,9 +72,10 @@ def create_site_builder(
         extensions=['webassets.ext.jinja2.AssetsExtension']
     )
 
-    assets_environment = AssetsEnvironment(directory=output_dir, url='/', cache='static/.webassets-cache')
-    assets_environment.append_path(static_dir)
+    site.env.assets_environment = AssetsEnvironment(directory=output_dir, url='/', cache='static/.webassets-cache')
+    site.env.assets_environment.append_path(static_dir)
 
-    site.env.assets_environment = assets_environment
+    for name, args, kwargs in assets_bundles:
+        site.env.assets_environment.register(name, *args, **kwargs)
 
     return site

@@ -13,6 +13,10 @@ CONFIG = {
     'static_directories_to_copy': [
         'images',
     ],
+    'assets_bundles': [
+        ('css_base', ('css/base.css',), {'filters': 'cssutils', 'output': 'css/base.min.css'}),
+        ('css_index', ('css/base.css', 'css/index.css'), {'filters': 'cssutils', 'output': 'css/index.min.css'}),
+    ],
     'contexts': [
         (r'index\.html', {
             'games_being_played': [

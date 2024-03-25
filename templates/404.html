@@ -4,6 +4,10 @@
 
 {% block description %}Ah ben zut.{% endblock %}
 
+{% block cssfiles %}
+    {% assets 'css_base' %}<link rel="stylesheet" href="{{ ASSET_URL }}">{% endassets %}
+{% endblock %}
+
 {% block content %}
     <div class="text-center">
         <p>

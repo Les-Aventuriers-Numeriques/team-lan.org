@@ -45,6 +45,7 @@ def build(c: Context, watch: bool = False) -> None:
         CONFIG['output_dir'],
         CONFIG['static_dir'],
         CONFIG['contexts'],
+        CONFIG['assets_bundles'],
         CONFIG['minify_xml'],
         CONFIG['remove_html_extension']
     ).render(watch)
