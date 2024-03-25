@@ -21,6 +21,7 @@ CONFIG = {
         (r'index\.html', {
             'games_being_played': [
                 (107410, 'Arma 3'),
+                (1158310, 'Crusader Kings III'),
                 (232090, 'Killing Floor 2'),
                 (578080, 'PUBG'),
                 (252950, 'Rocket League'),
