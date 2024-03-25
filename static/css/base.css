@@ -17,5 +17,40 @@ body > header a {
 
 body > footer {
     display: flex;
-    column-gap: var(--pico-block-spacing-vertical);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    column-gap: var(--pico-grid-column-gap);
+    row-gap: var(--pico-grid-row-gap);
 }
+
+body > footer > *:first-child {
+    font-size: 0.7em;
+}
+
+body > footer > *:last-child {
+    font-size: 1.5em;
+}
+
+/*@media (min-width: 576px) {
+
+}*/
+
+@media (min-width: 768px) {
+    body > footer {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+/*@media (min-width: 1024px) {
+
+}
+
+@media (min-width: 1280px) {
+
+}
+
+@media (min-width: 1536px) {
+
+}*/
