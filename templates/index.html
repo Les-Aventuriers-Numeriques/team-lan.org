@@ -19,13 +19,11 @@
         </div>
     </section>
 
-    <article>
-        <header><i class="bi bi-pc-display"></i> A quoi on joue ?</header>
+    {% with title = 'En ce moment, on joue à...', games = games_being_played %}
+        {% include '_games.html' %}
+    {% endwith %}
 
-        <div class="games">
-            {% for appid, appname in games_being_played %}
-                <a href="https://store.steampowered.com/app/{{ appid }}" target="_blank"><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/{{ appid }}/capsule_231x87.jpg" alt="Illustration {{ appname }}" title="{{ appname }}"></a>
-            {% endfor %}
-        </div>
-    </article>
+    {% with title = 'On a beaucoup joué par le passé à...', games = previously_played_games %}
+        {% include '_games.html' %}
+    {% endwith %}
 {% endblock %}

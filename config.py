@@ -20,15 +20,22 @@ CONFIG = {
     'contexts': [
         (r'index\.html', {
             'games_being_played': [
-                (107410, 'Arma 3'),
                 (1158310, 'Crusader Kings III'),
+                (394360, 'Hearts of Iron IV'),
                 (232090, 'Killing Floor 2'),
                 (578080, 'PUBG'),
-                (252950, 'Rocket League'),
-                (270150, 'RUNNING WITH RIFLES'),
                 (526870, 'Satisfactory'),
                 (393380, 'Squad'),
             ],
+            'previously_played_games': [
+                (107410, 'Arma 3'),
+                (813780, 'Age of Empires II'),
+                (681590, 'Blitzkrieg Mod'),
+                (453090, 'Parkitect'),
+                (233450, 'Prison Architect'),
+                (252950, 'Rocket League'),
+                (270150, 'RUNNING WITH RIFLES'),
+            ]
         }),
         (r'.*\.html', {
             'social_links': [
