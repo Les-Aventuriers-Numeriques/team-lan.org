@@ -1,15 +1,48 @@
 /************************************************************************
+ * Styles de base */
+
+/************************************************************************
  * Styles globaux */
 
 .text-center {
     text-align: center;
 }
 
+body > main > *:last-child {
+    margin-bottom: 0;
+}
+
 /************************************************************************
  * En-tête */
 
+body > header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    column-gap: var(--pico-spacing);
+    row-gap: var(--pico-spacing);
+    border-bottom: 1px solid var(--pico-muted-border-color);
+}
+
 body > header a {
     text-decoration: none;
+}
+
+body > header hgroup {
+    margin-bottom: 0;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    body > header {
+        flex-direction: row;
+        justify-content: start;
+    }
+
+    body > header hgroup {
+        text-align: left;
+    }
 }
 
 /************************************************************************
@@ -20,8 +53,9 @@ body > footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    column-gap: var(--pico-grid-column-gap);
-    row-gap: var(--pico-grid-row-gap);
+    column-gap: var(--pico-spacing);
+    row-gap: var(--pico-spacing);
+    border-top: 1px solid var(--pico-muted-border-color);
 }
 
 body > footer > *:first-child {
@@ -32,12 +66,9 @@ body > footer > *:last-child {
     font-size: 1.5em;
     display: flex;
     flex-direction: row;
-    column-gap: var(--pico-grid-column-gap);
+    column-gap: var(--pico-spacing);
+    row-gap: var(--pico-spacing);
 }
-
-/*@media (min-width: 576px) {
-
-}*/
 
 @media (min-width: 768px) {
     body > footer {
@@ -45,15 +76,3 @@ body > footer > *:last-child {
         justify-content: space-between;
     }
 }
-
-/*@media (min-width: 1024px) {
-
-}
-
-@media (min-width: 1280px) {
-
-}
-
-@media (min-width: 1536px) {
-
-}*/

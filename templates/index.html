@@ -7,11 +7,17 @@
 {% endblock %}
 
 {% block content %}
-    <p class="text-center">
-        <img src="{{ url('/images/logo_256.png') }}" alt="Logo de notre team">
-    </p>
-
-    {{ lipsum(3) }}
+    <section class="description">
+        <div>
+            {{ lipsum(1, False) }}
+        </div>
+        <div>
+            {{ lipsum(1, False) }}
+        </div>
+        <div>
+            {{ lipsum(1, False) }}
+        </div>
+    </section>
 
     <article>
         <header><i class="bi bi-pc-display"></i> A quoi on joue ?</header>

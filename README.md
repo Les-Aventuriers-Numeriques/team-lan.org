@@ -2,7 +2,7 @@
 
 Le [site web principal](https://team-lan.org/) de la team Les Aventuriers Numériques.
 
-[![Publication](https://github.com/Les-Aventuriers-Numeriques/site-principal/actions/workflows/publish.yml/badge.svg)](https://github.com/Les-Aventuriers-Numeriques/site-principal/actions/workflows/publish.yml)
+[![Publication](https://github.com/Les-Aventuriers-Numeriques/team-lan.org/actions/workflows/publish.yml/badge.svg)](https://github.com/Les-Aventuriers-Numeriques/team-lan.org/actions/workflows/publish.yml)
 
 ## Prérequis
 
