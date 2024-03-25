@@ -1,17 +1,40 @@
 /************************************************************************
  * Liste des jeux */
+/*
+.grid {
+  grid-column-gap: var(--pico-grid-column-gap);
+  grid-row-gap: var(--pico-grid-row-gap);
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(0%, 1fr));
+  }
+}
+.grid > * {
+  min-width: 0;
+}
+*/
 
 body > main .games {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    column-gap: var(--pico-block-spacing-vertical);
-    row-gap: var(--pico-block-spacing-horizontal);
+    grid-template-columns: 1fr;
+    column-gap: var(--pico-grid-column-gap);
+    row-gap: var(--pico-grid-row-gap);
 }
 
 body > main .games > * {
     justify-self: center;
+    min-width: 0;
 }
 
 body > main .games img {
     border-radius: var(--pico-border-radius);
+}
+
+@media (min-width: 768px) {
+    body > main .games {
+    grid-template-columns: repeat(5, 1fr);
+    }
 }
