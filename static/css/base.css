@@ -30,6 +30,9 @@ body > footer > *:first-child {
 
 body > footer > *:last-child {
     font-size: 1.5em;
+    display: flex;
+    flex-direction: row;
+    column-gap: var(--pico-grid-column-gap);
 }
 
 /*@media (min-width: 576px) {
