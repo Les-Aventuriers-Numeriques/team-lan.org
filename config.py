@@ -20,9 +20,13 @@ CONFIG = {
     'contexts': [
         (r'index\.html', {
             'games_being_played': [
+                (107410, 'Arma 3'),
+                (232090, 'Killing Floor 2'),
                 (578080, 'PUBG'),
+                (252950, 'Rocket League'),
+                (270150, 'RUNNING WITH RIFLES'),
                 (526870, 'Satisfactory'),
-                (504210, 'SHENZHEN I/O'),
+                (393380, 'Squad'),
             ],
         }),
         (r'.*\.html', {
