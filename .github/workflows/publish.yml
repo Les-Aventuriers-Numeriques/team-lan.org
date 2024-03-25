@@ -34,4 +34,5 @@ jobs:
           SSH_USER: ${{ vars.SSH_USER }}
           BASE_URL: ${{ vars.BASE_URL }}
           MINIFY_XML: ${{ vars.MINIFY_XML }}
+          REMOVE_HTML_EXTENSION: ${{ vars.REMOVE_HTML_EXTENSION }}
         run: invoke clean build publish
