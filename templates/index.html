@@ -8,14 +8,15 @@
 
 {% block content %}
     <section class="description">
-        <div>
-            {{ lipsum(1, False) }}
+        <div class="text-justify">
+            <p>Nous sommes un regroupement de joueurs partageant la même passion - les jeux vidéo - dont les origines remontent à l'âge d'or de <i>Project Reality</i>, un mod pour <i>Battlefield 2</i>.</p>
+            <p>A l'époque, les membres de ce groupe pouvaient se compter sur les doigts d'une main, mais de nombreuses péripéties au fil des années nous ont permis de rencontrer des joueurs partageant nos valeurs, qui ont décidé de jouer régulièrement à nos côtés.</p>
         </div>
-        <div>
-            {{ lipsum(1, False) }}
+        <div class="text-justify">
+            <p><i>Les Aventuriers Numériques</i> est née en 2024, fondée par d'anciens membres de la team multigaming =EaSy= Company, qui existe depuis 2008.</p>
         </div>
-        <div>
-            {{ lipsum(1, False) }}
+        <div class="text-justify">
+            <p>Nous organisons depuis 2023 une petite <a href="{{ url('/lan.html') }}">LAN party annuelle</a> (sur invitation uniquement). Il n'est pas improbable qu'un jour, nous l'ouvrions au public.</p>
         </div>
     </section>
 
@@ -23,7 +24,7 @@
         {% include '_games.html' %}
     {% endwith %}
 
-    {% with title = 'On a beaucoup joué par le passé à...', games = previously_played_games %}
+    {% with title = 'Auparavant, on a beaucoup joué à...', games = previously_played_games %}
         {% include '_games.html' %}
     {% endwith %}
 {% endblock %}

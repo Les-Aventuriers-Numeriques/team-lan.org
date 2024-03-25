@@ -8,7 +8,15 @@
     text-align: center;
 }
 
+.text-justify {
+    text-align: justify;
+}
+
 body > main > *:last-child {
+    margin-bottom: 0;
+}
+
+* > p:last-child {
     margin-bottom: 0;
 }
 
@@ -22,7 +30,7 @@ body > header {
     align-items: center;
     column-gap: var(--pico-spacing);
     row-gap: var(--pico-spacing);
-    border-bottom: 1px solid var(--pico-muted-border-color);
+    border-bottom: var(--pico-border-width) solid var(--pico-muted-border-color);
 }
 
 body > header a {
@@ -55,7 +63,7 @@ body > footer {
     align-items: center;
     column-gap: var(--pico-spacing);
     row-gap: var(--pico-spacing);
-    border-top: 1px solid var(--pico-muted-border-color);
+    border-top: var(--pico-border-width) solid var(--pico-muted-border-color);
 }
 
 body > footer > *:first-child {
