@@ -7,12 +7,23 @@
 {% block canonical_url %}{{ url('/lan', absolute=True) }}{% endblock %}
 
 {% block cssfiles %}
-    {% assets 'css_base' %}<link rel="stylesheet" href="{{ ASSET_URL }}">{% endassets %}
+    {% assets 'css_lan' %}<link rel="stylesheet" href="{{ ASSET_URL }}">{% endassets %}
 {% endblock %}
 
 {% block content %}
-    <hgroup>
-        <h1>TODO</h1>
-        <p>TODO</p>
-    </hgroup>
+    <h1>{{ self.title() }}</h1>
+
+    <section>
+        <p>Comme chaque année depuis 2023, nous organisons une LAN party privée. Voici les informations à propos de l'édition de cette année.</p>
+    </section>
+
+    <article>
+        <details>
+            <summary>Précédentes éditions</summary>
+
+            <h2>2023</h2>
+
+            <p>Cette première édition s'est déroulée du XX au XX XXXXXXX à Amilly (à côté de Montargis, au sud de Paris). Nous étions 6 joueurs, et avons joué à XXX, XXX et XXX. Nous avions loué une maison entière pour l'évènement.</p>
+        </details>
+    </article>
 {% endblock %}
