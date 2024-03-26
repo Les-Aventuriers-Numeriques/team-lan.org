@@ -1,9 +1,9 @@
-<article>
-    <header>{{ title }}</header>
+<section class="games">
+    <h2>{{ title }}</h2>
 
-    <div class="games">
+    <div>
         {% for appid, appname in games %}
             <a href="https://store.steampowered.com/app/{{ appid }}" target="_blank"><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/{{ appid }}/capsule_231x87.jpg" alt="Illustration {{ appname }}" title="{{ appname }}"></a>
         {% endfor %}
     </div>
-</article>
+</section>

@@ -9,7 +9,7 @@
     <meta name="color-scheme" content="light dark">
     <meta name="description" content="{% block description %}{{ site_description }}{% endblock %}">
 
-    <meta property="og:type" content="page">
+    <meta property="og:type" content="website">
     <meta property="og:url" content="{% block canonical_url %}{% endblock %}">
     <meta property="og:site_name" content="{{ site_name }}">
     <meta property="og:title" content="{{ self.title() or site_name }}">
@@ -27,10 +27,10 @@
 <body>
     <header>
         <a href="{{ url('/') }}"><img src="{{ url('/images/logo_120.png') }}" alt="Logo de la team {{ site_name }}"></a>
-        <hgroup>
-            <h1><a href="{{ url('/') }}">{{ site_name }}</a></h1>
-            <p>{{ site_description }}</p>
-        </hgroup>
+        <div class="site-name">
+            <a href="{{ url('/') }}">{{ site_name }}</a>
+            <div>{{ site_description }}</div>
+        </div>
     </header>
 
     <main>
@@ -39,7 +39,7 @@
 
     <footer>
         <div class="text-center">
-            © {{ current_year }} {{ site_name }} (<a href="https://github.com/Les-Aventuriers-Numeriques/team-lan.org/graphs/contributors">contributeurs</a>)
+            © {{ current_year }} <a href="https://epoc.fr/">Maxime "Epoc" Gross</a> et <a href="https://github.com/Les-Aventuriers-Numeriques/team-lan.org/graphs/contributors">contributeurs</a>
         </div>
 
         <div>

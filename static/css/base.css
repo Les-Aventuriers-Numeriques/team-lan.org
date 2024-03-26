@@ -12,10 +12,7 @@
     text-align: justify;
 }
 
-body > main > *:last-child {
-    margin-bottom: 0;
-}
-
+body > main > *:last-child,
 * > p:last-child {
     margin-bottom: 0;
 }
@@ -37,9 +34,19 @@ body > header a {
     text-decoration: none;
 }
 
-body > header hgroup {
-    margin-bottom: 0;
+body > header > .site-name {
     text-align: center;
+}
+
+body > header > .site-name > a {
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 1.125;
+}
+
+body > header > .site-name > div {
+    color: var(--pico-muted-color);
+    font-size: 1rem;
 }
 
 @media (min-width: 768px) {
@@ -48,7 +55,7 @@ body > header hgroup {
         justify-content: start;
     }
 
-    body > header hgroup {
+    body > header > .site-name {
         text-align: left;
     }
 }

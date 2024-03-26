@@ -28,6 +28,7 @@ CONFIG = {
                 (393380, 'Squad'),
             ],
             'previously_played_games': [
+                (33900, 'Arma 2'),
                 (107410, 'Arma 3'),
                 (813780, 'Age of Empires II'),
                 (681590, 'Blitzkrieg Mod'),

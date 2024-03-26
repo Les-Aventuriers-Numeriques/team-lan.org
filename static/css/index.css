@@ -4,7 +4,7 @@
 /************************************************************************
  * Descriptif */
 
-body > main > section {
+body > main > section.description > div {
     display: grid;
     grid-template-columns: 1fr;
     column-gap: var(--pico-spacing);
@@ -12,50 +12,50 @@ body > main > section {
 }
 
 @media (min-width: 1024px) {
-    body > main > section {
-        grid-template-columns: repeat(3, 1fr);
+    body > main > section.description > div {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 /************************************************************************
  * Liste des jeux */
 
-body > main .games {
+body > main section.games > div {
     display: grid;
     grid-template-columns: 1fr;
     column-gap: var(--pico-spacing);
     row-gap: var(--pico-spacing);
 }
 
-body > main .games > * {
+body > main section.games > div > * {
     justify-self: center;
     min-width: 0;
 }
 
-body > main .games img {
+body > main section.games > div img {
     border-radius: var(--pico-border-radius);
 }
 
 @media (min-width: 576px) {
-    body > main .games {
+    body > main section.games > div {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (min-width: 1024px) {
-    body > main .games {
+    body > main section.games > div {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media (min-width: 1280px) {
-    body > main .games {
+    body > main section.games > div {
         grid-template-columns: repeat(4, 1fr);
     }
 }
 
 @media (min-width: 1536px) {
-    body > main .games {
+    body > main section.games > div {
         grid-template-columns: repeat(5, 1fr);
     }
 }
