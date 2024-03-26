@@ -2,22 +2,6 @@
  * Page d'accueil */
 
 /************************************************************************
- * Descriptif */
-
-body > main > section.description > div {
-    display: grid;
-    grid-template-columns: 1fr;
-    column-gap: var(--pico-spacing);
-    row-gap: var(--pico-spacing);
-}
-
-@media (min-width: 1024px) {
-    body > main > section.description > div {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/************************************************************************
  * Liste des jeux */
 
 body > main section.games > div {

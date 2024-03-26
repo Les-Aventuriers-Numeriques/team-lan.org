@@ -61,6 +61,15 @@ body > header > .site-name > div {
 }
 
 /************************************************************************
+ * Contenu */
+
+body > main h1:before,
+body > main h2:before {
+    content: ':: ';
+    color: var(--pico-primary);
+}
+
+/************************************************************************
  * Pied de page */
 
 body > footer {
