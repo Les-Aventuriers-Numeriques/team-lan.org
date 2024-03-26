@@ -2,8 +2,6 @@ from invoke import task, Context
 from config import CONFIG
 from environs import Env
 import helpers
-import shutil
-import os
 
 env = Env()
 env.read_env()
@@ -11,19 +9,15 @@ env.read_env()
 CONFIG.update({
     'base_url': env.str('BASE_URL', CONFIG['base_url']),
     'minify_xml': env.bool('MINIFY_XML', CONFIG['minify_xml']),
-    'remove_html_extension': env.bool('REMOVE_HTML_EXTENSION', CONFIG['remove_html_extension']),
 })
 
 
 @task
 def clean(c: Context) -> None:
-    """Supprime les fichiers générés"""
+    """Supprime et recrée le répertoire du site généré"""
     print('Suppression et recréation de "{output_dir}"...'.format(**CONFIG))
 
-    if os.path.isdir(CONFIG['output_dir']):
-        shutil.rmtree(CONFIG['output_dir'])
-
-    os.makedirs(CONFIG['output_dir'], exist_ok=True)
+    helpers.clean(CONFIG['output_dir'])
 
 
 @task
@@ -46,15 +40,16 @@ def build(c: Context, watch: bool = False) -> None:
         CONFIG['static_dir'],
         CONFIG['contexts'],
         CONFIG['assets_bundles'],
-        CONFIG['minify_xml'],
-        CONFIG['remove_html_extension']
+        CONFIG['minify_xml']
     ).render(watch)
 
 
 @task
 def serve(c: Context) -> None:
     """Permet de servir le site rendu via un serveur HTTP"""
-    c.run('python -m http.server -d {output_dir} -p HTTP/1.1 {serve_port}'.format(**CONFIG))
+    print('Lancement du serveur HTTP http://localhost:{serve_port}/ pour le répertoire {output_dir}...'.format(**CONFIG))
+
+    helpers.serve(CONFIG['output_dir'], CONFIG['serve_port'])
 
 
 @task

@@ -8,10 +8,6 @@
     text-align: center;
 }
 
-.text-justify {
-    text-align: justify;
-}
-
 body > main > *:last-child,
 * > p:last-child {
     margin-bottom: 0;

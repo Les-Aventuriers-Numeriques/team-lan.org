@@ -6,7 +6,6 @@ CONFIG = {
     'minify_xml': False,
     'output_dir': 'output',
     'static_dir': 'static',
-    'remove_html_extension': False,
     'static_files_to_copy': [
         'favicon.ico',
     ],

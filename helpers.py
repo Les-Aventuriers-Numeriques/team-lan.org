@@ -1,3 +1,4 @@
+from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from webassets import Environment as AssetsEnvironment
 from typing import List, Tuple, Any, Dict
 from staticjinja import Site
@@ -5,6 +6,14 @@ from jinja2 import Template
 import htmlmin
 import shutil
 import os
+
+
+def clean(output_dir: str) -> None:
+    """Supprime et recrée le répertoire du site généré"""
+    if os.path.isdir(output_dir):
+        shutil.rmtree(output_dir)
+
+    os.makedirs(output_dir, exist_ok=True)
 
 
 def minify_template_xml(site: Site, template: Template, **kwargs) -> None:
@@ -30,6 +39,7 @@ def copy_static_assets(
         static_files_to_copy: List[str],
         static_directories_to_copy: List[str]
 ) -> None:
+    """Copie les fichiers statiques (images, etc) nécessaires au site"""
     for file in static_files_to_copy:
         dir_name = os.path.dirname(file)
 
@@ -48,16 +58,15 @@ def create_site_builder(
         static_dir: str,
         contexts: List[Tuple[str, dict[str, Any]]],
         assets_bundles: List[Tuple[str, Tuple[str,...], Dict[str, str]]],
-        minify_xml: bool = False,
-        remove_html_extension: bool = False
+        minify_xml: bool = False
 ) -> Site:
-    """Crée une nouvelle instance `Site`"""
+    """Crée une nouvelle instance `staticjinja.Site`"""
     def build_url(path: str, absolute: bool = False) -> str:
         """Construit une URL vers un fichier"""
         url = base_url.rstrip('/') + '/' if absolute else '/'
         url += path.lstrip('/')
 
-        return url if not remove_html_extension else url.removesuffix('.html')
+        return url
 
     site = Site.make_site(
         outpath=output_dir,
@@ -79,3 +88,35 @@ def create_site_builder(
         site.env.assets_environment.register(name, *args, **kwargs)
 
     return site
+
+
+def serve(output_dir: str, serve_port: int) -> None:
+    """Démarre un serveur HTTP servant le répertoire du site généré"""
+    class HtmlWithoutSuffixHTTPRequestHandler(SimpleHTTPRequestHandler):
+        protocol_version = 'HTTP/1.1'
+
+        def __init__(self, *args, **kvargs):
+            try:
+                super().__init__(*args, **kvargs, directory=output_dir)
+            except ConnectionAbortedError:
+                pass
+
+        def translate_path(self, path):
+            path = super().translate_path(path)
+
+            # Si on ne demande pas un répertoire
+            if not path.endswith(('\\', '/')):
+                _, extension = os.path.splitext(path)
+
+                # Si pas d'extension de fichier dans le chemin
+                if not extension:
+                    # On considère qu'on veux afficher un fichier HTML (émulation de la réécriture d'URLs d'un serveur web)
+                    path += '.html'
+
+            return path
+
+    with ThreadingHTTPServer(('127.0.0.1', serve_port), HtmlWithoutSuffixHTTPRequestHandler) as server:
+        try:
+            server.serve_forever()
+        except KeyboardInterrupt:
+            pass
