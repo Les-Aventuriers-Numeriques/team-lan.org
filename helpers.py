@@ -2,6 +2,7 @@ from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from webassets import Environment as AssetsEnvironment
 from typing import List, Tuple, Any, Dict
 from staticjinja import Site
+from http import HTTPStatus
 from jinja2 import Template
 import htmlmin
 import shutil
@@ -39,7 +40,7 @@ def copy_static_assets(
         static_files_to_copy: List[str],
         static_directories_to_copy: List[str]
 ) -> None:
-    """Copie les fichiers statiques (images, etc) nécessaires au site"""
+    """Copie les fichiers statiques (images, etc) dans le répertoire du site généré"""
     for file in static_files_to_copy:
         dir_name = os.path.dirname(file)
 
@@ -92,7 +93,7 @@ def create_site_builder(
 
 def serve(output_dir: str, serve_port: int) -> None:
     """Démarre un serveur HTTP servant le répertoire du site généré"""
-    class HtmlWithoutSuffixHTTPRequestHandler(SimpleHTTPRequestHandler):
+    class SimpleButEnhancedHTTPRequestHandler(SimpleHTTPRequestHandler):
         protocol_version = 'HTTP/1.1'
 
         def __init__(self, *args, **kvargs):
@@ -104,18 +105,42 @@ def serve(output_dir: str, serve_port: int) -> None:
         def translate_path(self, path):
             path = super().translate_path(path)
 
+            # Emulation de la réécriture d'URLs d'un serveur web
+
             # Si on ne demande pas un répertoire
             if not path.endswith(('\\', '/')):
                 _, extension = os.path.splitext(path)
 
                 # Si pas d'extension de fichier dans le chemin
                 if not extension:
-                    # On considère qu'on veux afficher un fichier HTML (émulation de la réécriture d'URLs d'un serveur web)
+                    # On considère qu'on veux afficher un fichier HTML
                     path += '.html'
 
             return path
 
-    with ThreadingHTTPServer(('127.0.0.1', serve_port), HtmlWithoutSuffixHTTPRequestHandler) as server:
+        def send_error(self, code, message=None, explain=None):
+            # Emulation de la page d'erreur 404 personnalisée définie au niveau du serveur web
+            if self.command != 'HEAD' and code == HTTPStatus.NOT_FOUND: # Uniquement pour méthode HTTP != HEAD et erreur 404
+                try:
+                    f = open(os.path.join(self.directory, '404.html'), 'rb') # Si la page d'erreur personnalisée existe
+                except OSError:
+                    return super().send_error(code, message=message, explain=explain)
+
+                fs = os.fstat(f.fileno())
+
+                self.log_error("code %d, message %s", code, message)
+                self.send_response(code, message)
+                self.send_header('Connection', 'close')
+
+                self.send_header('Content-Type', self.error_content_type)
+                self.send_header('Content-Length', str(fs[6]))
+                self.end_headers()
+
+                self.copyfile(f, self.wfile)
+            else:
+                return super().send_error(code, message=message, explain=explain)
+
+    with ThreadingHTTPServer(('127.0.0.1', serve_port), SimpleButEnhancedHTTPRequestHandler) as server:
         try:
             server.serve_forever()
         except KeyboardInterrupt:

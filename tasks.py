@@ -46,7 +46,7 @@ def build(c: Context, watch: bool = False) -> None:
 
 @task
 def serve(c: Context) -> None:
-    """Permet de servir le site rendu via un serveur HTTP"""
+    """Démarre un serveur HTTP servant le répertoire du site généré"""
     print('Lancement du serveur HTTP http://localhost:{serve_port}/ pour le répertoire {output_dir}...'.format(**CONFIG))
 
     helpers.serve(CONFIG['output_dir'], CONFIG['serve_port'])
