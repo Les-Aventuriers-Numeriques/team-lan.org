@@ -104,7 +104,7 @@ def serve(c: Context) -> None:
         def __init__(self, *args, **kvargs):
             try:
                 super().__init__(*args, **kvargs, directory=CONFIG['output_dir'])
-            except ConnectionAbortedError:
+            except (ConnectionAbortedError, BrokenPipeError):
                 pass
 
         def translate_path(self, path):
