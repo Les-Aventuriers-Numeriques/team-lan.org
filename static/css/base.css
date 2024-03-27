@@ -21,13 +21,18 @@ body > header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    column-gap: var(--pico-spacing);
-    row-gap: var(--pico-spacing);
+    column-gap: var(--pico-grid-column-gap);
+    row-gap: var(--pico-grid-row-gap);
     border-bottom: var(--pico-border-width) solid var(--pico-muted-border-color);
 }
 
 body > header a {
     text-decoration: none;
+}
+
+body > header a img {
+    border: var(--pico-border-width) solid var(--pico-muted-border-color);
+    border-radius: var(--pico-border-radius);
 }
 
 body > header > .site-name {
@@ -73,8 +78,8 @@ body > footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    column-gap: var(--pico-spacing);
-    row-gap: var(--pico-spacing);
+    column-gap: var(--pico-grid-column-gap);
+    row-gap: var(--pico-grid-row-gap);
     border-top: var(--pico-border-width) solid var(--pico-muted-border-color);
 }
 
@@ -86,8 +91,8 @@ body > footer > *:last-child {
     font-size: 1.5em;
     display: flex;
     flex-direction: row;
-    column-gap: var(--pico-spacing);
-    row-gap: var(--pico-spacing);
+    column-gap: var(--pico-grid-column-gap);
+    row-gap: var(--pico-grid-row-gap);
 }
 
 @media (min-width: 768px) {
