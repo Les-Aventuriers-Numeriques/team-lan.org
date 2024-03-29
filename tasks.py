@@ -11,6 +11,9 @@ import config as actual_config
 import shutil
 import os
 
+env = Env()
+env.read_env()
+
 default_config = {
     'SERVE_PORT': 8080,
     'BASE_URL': 'http://localhost:8080/',
@@ -26,6 +29,11 @@ default_config = {
 config = deepcopy(default_config)
 config.update({
     k: v for k, v in vars(actual_config).items() if k.isupper()
+})
+
+config.update({
+    'BASE_URL': env.str('BASE_URL', config['BASE_URL']),
+    'MINIFY_XML': env.bool('MINIFY_XML', config['MINIFY_XML']),
 })
 
 
@@ -165,12 +173,7 @@ def serve(c: Context) -> None:
 @task
 def publish(c: Context) -> None:
     """Publie le site en production (avec `rsync`)"""
-    env = Env()
-    env.read_env()
-
     config.update({
-        'BASE_URL': env.str('BASE_URL', config['BASE_URL']),
-        'MINIFY_XML': env.bool('MINIFY_XML', config['MINIFY_XML']),
         'SSH_USER': env.str('SSH_USER'),
         'SSH_HOST': env.str('SSH_HOST'),
         'SSH_PORT': env.int('SSH_PORT', 22),
