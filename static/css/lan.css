@@ -2,6 +2,33 @@
  * Page LAN annuelle */
 
 /************************************************************************
+ * Informations édition actuelle */
+
+body > main .info {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: var(--pico-grid-column-gap);
+    row-gap: var(--pico-grid-row-gap);
+}
+
+body > main .info > * {
+    min-width: 0;
+    margin-bottom: 0;
+}
+
+@media (min-width: 1024px) {
+    body > main .info {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1280px) {
+    body > main .info {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/************************************************************************
  * Précédentes éditions */
 
 body > main > article > details {
