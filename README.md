@@ -17,14 +17,14 @@ Clonez ce dépôt, puis le `pip install -r requirements.txt` habituel.
 
 Définissez les variables d'environnement suivantes ou créez un fichier `.env` les contenant :
 
-| Nom          | Type | Requis ? | Défaut                   | Description                                                                                  |
-|--------------|------|----------|--------------------------|----------------------------------------------------------------------------------------------|
-| `BASE_URL`   | str  | Non      | `http://localhost:8080/` | Protocole et domaine de base pour les URLs absolues                                          |
-| `MINIFY_XML` | bool | Non      | `False`                  | Minification ou non de l'XML (et par extension, de l'HTML également) résultant des templates |
-| `SSH_USER`   | str  | Non      |                          | Nom d'utilisateur SSH pour le déploiement                                                    |
-| `SSH_HOST`   | str  | Non      |                          | Hôte cible du déploiement                                                                    |
-| `SSH_PORT`   | int  | Non      | `22`                     | Port de l'hôte du déploiement                                                                |
-| `SSH_PATH`   | str  | Non      |                          | Chemin absolu du répertoire de déploiement                                                   |
+| Nom          | Type | Requis ?               | Défaut                   | Description                                                                              |
+|--------------|------|------------------------|--------------------------|------------------------------------------------------------------------------------------|
+| `BASE_URL`   | str  | Non                    | `http://localhost:8080/` | Protocole et domaine de base pour les URLs absolues                                      |
+| `MINIFY_XML` | bool | Non                    | `False`                  | Minification ou non de l'XML (et par extension, de l'HTML également) résultant  du rendu |
+| `SSH_USER`   | str  | Déploiement uniquement |                          | Nom d'utilisateur SSH pour le déploiement                                                |
+| `SSH_HOST`   | str  | Déploiement uniquement |                          | Hôte cible du déploiement                                                                |
+| `SSH_PORT`   | int  | Déploiement uniquement | `22`                     | Port de l'hôte du déploiement                                                            |
+| `SSH_PATH`   | str  | Déploiement uniquement |                          | Chemin absolu du répertoire de déploiement                                               |
 
 ### Apache
 
