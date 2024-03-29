@@ -8,8 +8,7 @@
     text-align: center;
 }
 
-body > main > *:last-child,
-* > p:last-child {
+.mb-0 {
     margin-bottom: 0;
 }
 

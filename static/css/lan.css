@@ -27,10 +27,3 @@ body > main .info > * {
         grid-template-columns: repeat(3, 1fr);
     }
 }
-
-/************************************************************************
- * Précédentes éditions */
-
-body > main > article > details {
-    margin-bottom: 0;
-}

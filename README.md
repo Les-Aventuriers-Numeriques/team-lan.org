@@ -33,8 +33,8 @@ La configuration du site. Tous les chemins sont relatifs au répertoire racine, 
 
 ### Environnement
 
-Définissez les variables d'environnement suivantes ou créez un fichier `.env` les contenant. Elles sont destinées à être
-utilisées pour le déploiement du site (`invoke publish`).
+Les variables d'environnement suivantes sont destinées à être utilisées pour le déploiement du site (`invoke publish`).
+Créez-les de façon classique ou dans un fichier `.env` les contenant.
 
 | Nom          | Type | Requis ?                  | Défaut                     | Description                                                                    |
 |--------------|------|---------------------------|----------------------------|--------------------------------------------------------------------------------|

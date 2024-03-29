@@ -20,7 +20,7 @@
         {% include '_games.html' %}
     {% endwith %}
 
-    {% with title = 'Auparavant, on a beaucoup joué à...', games = previously_played_games %}
+    {% with title = 'Auparavant, on a beaucoup joué à...', games = previously_played_games, class = 'mb-0' %}
         {% include '_games.html' %}
     {% endwith %}
 {% endblock %}
