@@ -65,7 +65,7 @@ body > header > .site-name > div {
 
 body > main h1:before,
 body > main h2:before {
-    content: '. ';
+    content: '• ';
     color: var(--pico-primary);
 }
 
