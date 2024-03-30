@@ -41,6 +41,7 @@ CONTEXTS = [
             (270150, 'RUNNING WITH RIFLES'),
             (393380, 'Squad'),
             (377300, 'Thunder Tier One'),
+            (236390, 'War Thunder'),
         ]
     }),
     (r'.*\.html', {
