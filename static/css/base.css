@@ -69,6 +69,55 @@ body > main h2:before {
     color: var(--pico-primary);
 }
 
+body > main article > header,
+body > main details > summary {
+    font-weight: bolder;
+}
+
+/************************************************************************
+ * Liste des jeux */
+
+body > main .games {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: var(--pico-grid-column-gap);
+    row-gap: var(--pico-grid-row-gap);
+}
+
+body > main .games > * {
+    justify-self: center;
+    min-width: 0;
+}
+
+body > main .games img {
+    border: var(--pico-border-width) solid var(--pico-muted-border-color);
+    border-radius: var(--pico-border-radius);
+}
+
+@media (min-width: 576px) {
+    body > main .games {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    body > main .games {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1280px) {
+    body > main .games {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 1536px) {
+    body > main .games {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
 /************************************************************************
  * Pied de page */
 

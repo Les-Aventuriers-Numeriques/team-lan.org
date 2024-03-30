@@ -11,22 +11,38 @@
 {% endblock %}
 
 {% block content %}
-    <h1>{{ self.title() }}</h1>
-
-    <p>Comme chaque année depuis 2023, nous organisons une LAN party privée (sur invitation uniquement, mais il se peut que nous l'ouvrions au public, un jour). Voici les informations à propos de l'édition de cette année.</p>
+    <p>Comme chaque année depuis 2023, nous organisons une LAN party privée. Il n'est pas improbable qu'un jour, nous l'ouvrions au public. Voici les informations à propos de l'édition de cette année.</p>
 
     <section class="info">
         <article>
             <header>Quand ?</header>
-            <p class="mb-0">Du 7 au 11 novembre 2024</p>
+            <p>Du 7 au 11 novembre 2024.</p>
+            <p class="mb-0">Aucune obligation de présence évidemment : vous venez et repartez quand vous voulez.</p>
         </article>
-         <article>
+        <article>
             <header>Où ?</header>
-            <p class="mb-0">[À définir]</p>
+            <p class="mb-0">À définir, quelque part dans la zone de Chalon-sur-Saône, Beaune, Verdun-sur-le-Doubs ou Arnay-le-Duc.</p>
         </article>
-       <article>
+        <article>
+            <header>Qui ?</header>
+            <p class="mb-0">A ce jour (30 mars), nous serons entre 6 et 8 joueurs.</p>
+        </article>
+        <article>
+            <header>Combien ?</header>
+            <p class="mb-0">L'ensemble des frais sont répartis équitablement entre tous les participants.</p>
+        </article>
+        <article class="lan-games">
             <header>Quels jeux ?</header>
-            <p class="mb-0">[À définir]</p>
+
+            {% if lan_games %}
+                <div class="games">
+                    {% with games = lan_games %}
+                        {% include '_games.html' %}
+                    {% endwith %}
+                </div>
+            {% else %}
+                <p class="mb-0">À définir.</p>
+            {% endif %}
         </article>
     </section>
 
@@ -37,7 +53,7 @@
             <details class="mb-0">
                 <summary>2023</summary>
 
-                <p class="mb-0">Cette première édition s'est déroulée du 28 octobre au 1er novembre à Amilly (à côté de Montargis, au sud de Paris). Nous étions 6 joueurs, et avions joué à Killing Floor 2, Rocket League, PUBG, RUNNING WITH RIFLES, Call to Arms, Satisfactory, un peu de Keep Talking And Nobody Explodes et Age of Empires II. Nous avions loué une maison entière pour l'évènement.</p>
+                <p class="mb-0">Cette première édition s'est déroulée du 28 octobre au 1er novembre à Amilly (à côté de Montargis, au sud de Paris). Nous étions 6 joueurs, et avions joué à Killing Floor 2, Rocket League, PUBG, RUNNING WITH RIFLES, Call to Arms, Satisfactory, un peu de Keep Talking And Nobody Explodes et Age of Empires II. Nous avions loué une maison entière.</p>
             </details>
         </article>
     </section>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>{% block title %}{% endblock title %}{{ ' :: ' if self.title() }}{{ site_name }}</title>
+    <title>{% block title %}{% endblock title %}{{ ' • ' if self.title() }}{{ site_name }}</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light dark">
@@ -34,6 +34,10 @@
     </header>
 
     <main class="container">
+        {% if self.title() %}
+            <h1>{{ self.title() }}</h1>
+        {% endif %}
+
         {% block content %}{% endblock %}
     </main>
 
