@@ -3,16 +3,16 @@
 <head>
     <meta charset="utf-8">
 
-    <title>{% block title %}{% endblock title %}{{ ' • ' if self.title() }}{{ site_name }}</title>
+    <title>{% block title %}{% endblock title %}{{ ' • ' if self.title() }}{{ team_name }}</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light dark">
-    <meta name="description" content="{% block description %}{{ site_description }}{% endblock %}">
+    <meta name="description" content="{% block description %}{{ motto }}{% endblock %}">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="{% block canonical_url %}{% endblock %}">
-    <meta property="og:site_name" content="{{ site_name }}">
-    <meta property="og:title" content="{{ self.title() or site_name }}">
+    <meta property="og:site_name" content="{{ team_name }}">
+    <meta property="og:title" content="{{ self.title() or team_name }}">
     <meta property="og:description" content="{{ self.description() }}">
     <meta property="og:image" content="{% block image %}{{ url('/images/logo_256.png', absolute=True) }}{% endblock %}">
     <meta property="og:locale" content="fr_FR">
@@ -26,10 +26,10 @@
 </head>
 <body>
     <header class="container">
-        <a href="{{ url('/') }}"><img src="{{ url('/images/logo_120.png') }}" alt="Logo de la team Les Aventuriers Numériques"></a>
+        <a href="{{ url('/') }}"><img src="{{ url('/images/logo_120.png') }}" alt="Logo de la team {{ team_name }}"></a>
         <div class="site-name">
-            <a href="{{ url('/') }}">{{ site_name }}</a>
-            <div>{{ site_description }}</div>
+            <a href="{{ url('/') }}">{{ team_name }}</a>
+            <div>{{ motto }}</div>
         </div>
     </header>
 

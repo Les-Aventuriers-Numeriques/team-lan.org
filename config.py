@@ -49,8 +49,8 @@ CONTEXTS = [
             ('steam', 'https://steamcommunity.com/groups/Les-Aventuriers-Numeriques'),
             ('github', 'https://github.com/Les-Aventuriers-Numeriques'),
         ],
-        'site_name': 'Les Aventuriers Numériques',
-        'site_description': 'Une team multigaming francophone et conviviale',
+        'team_name': 'Les Aventuriers Numériques',
+        'motto': 'Une team multigaming francophone et conviviale',
         'current_year': datetime.now().year,
     })
 ]
