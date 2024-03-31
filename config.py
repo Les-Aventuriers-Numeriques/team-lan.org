@@ -17,7 +17,9 @@ CONTEXTS = [
     (r'index\.html', {
         'games_being_played': [
             (1158310, 'Crusader Kings III'),
+            (1239080, 'Door Kickers 2'),
             (394360, 'Hearts of Iron IV'),
+            (686810, 'Hell Let Loose'),
             (232090, 'Killing Floor 2'),
             (578080, 'PUBG'),
             (526870, 'Satisfactory'),
