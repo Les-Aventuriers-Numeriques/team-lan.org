@@ -21,7 +21,6 @@
     <link rel="icon" href="{{ url('/favicon.ico') }}" sizes="32x32 48x48">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.0.6/css/pico.orange.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     {% block cssfiles %}{% endblock %}
 </head>
 <body>
@@ -48,7 +47,7 @@
 
         <div>
             {% for social_link_icon, social_link_url in social_links %}
-                <a href="{{ social_link_url }}"><i class="bi bi-{{ social_link_icon }}"></i></a>
+                <a href="{{ social_link_url }}">{{ icon(social_link_icon) }}</a>
             {% endfor %}
         </div>
     </footer>

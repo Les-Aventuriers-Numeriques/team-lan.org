@@ -2,6 +2,7 @@ from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from webassets import Environment as AssetsEnvironment
 from htmlmin import minify as minify_xml
 from invoke import task, Context
+from markupsafe import Markup
 from staticjinja import Site
 from http import HTTPStatus
 from jinja2 import Template
@@ -22,6 +23,7 @@ default_config = {
     'STATIC_DIR': 'static',
     'STATIC_FILES_TO_COPY': [],
     'STATIC_DIRECTORIES_TO_COPY': [],
+    'ASSETS_DIR': 'assets',
     'ASSETS_BUNDLES': [],
     'CONTEXTS': [],
 }
@@ -57,6 +59,10 @@ def build(c: Context, watch: bool = False) -> None:
         url += path.lstrip('/')
 
         return url
+
+    def embed_svg_icon(name: str) -> Markup:
+        with open(os.path.join(config['ASSETS_DIR'], 'icons', f'{name}.svg'), 'r') as f:
+            return Markup(f.read())
 
     def minify_template_xml(site: Site, template: Template, **kwargs) -> None:
         """Minifie le rendu d'un template Jinja XML (et par extension, HTML également)"""
@@ -94,6 +100,7 @@ def build(c: Context, watch: bool = False) -> None:
         mergecontexts=True,
         env_globals={
             'url': build_url,
+            'icon': embed_svg_icon,
         },
         contexts=config['CONTEXTS'],
         rules=[
@@ -102,8 +109,8 @@ def build(c: Context, watch: bool = False) -> None:
         extensions=['webassets.ext.jinja2.AssetsExtension']
     )
 
-    site.env.assets_environment = AssetsEnvironment(directory=config['OUTPUT_DIR'], url='/', cache='static/.webassets-cache')
-    site.env.assets_environment.append_path(config['STATIC_DIR'])
+    site.env.assets_environment = AssetsEnvironment(directory=config['OUTPUT_DIR'], url='/', cache='assets/.webassets-cache')
+    site.env.assets_environment.append_path(config['ASSETS_DIR'])
 
     for name, args, kwargs in config['ASSETS_BUNDLES']:
         site.env.assets_environment.register(name, *args, **kwargs)

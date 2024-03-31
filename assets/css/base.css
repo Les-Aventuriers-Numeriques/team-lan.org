@@ -136,11 +136,15 @@ body > footer > *:first-child {
 }
 
 body > footer > *:last-child {
-    font-size: 1.5em;
     display: flex;
     flex-direction: row;
     column-gap: var(--pico-grid-column-gap);
     row-gap: var(--pico-grid-row-gap);
+}
+
+body > footer > *:last-child svg.bi {
+    width: 1.5em;
+    height: 1.5em;
 }
 
 @media (min-width: 768px) {
