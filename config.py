@@ -23,6 +23,7 @@ CONTEXTS = [
             (232090, 'Killing Floor 2'),
             (578080, 'PUBG'),
             (526870, 'Satisfactory'),
+            (393380, 'Squad'),
         ],
         'previously_played_games': [
             (1015140, '10 Miles To Safety'),
@@ -42,7 +43,6 @@ CONTEXTS = [
             ('https://www.realitymod.com/', 'pr', 'Project Reality: Battlefield 2'),
             (252950, 'Rocket League'),
             (270150, 'RUNNING WITH RIFLES'),
-            (393380, 'Squad'),
             (377300, 'Thunder Tier One'),
             (236390, 'War Thunder'),
         ]
