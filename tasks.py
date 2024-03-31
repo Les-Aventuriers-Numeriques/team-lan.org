@@ -109,7 +109,11 @@ def build(c: Context, watch: bool = False) -> None:
         extensions=['webassets.ext.jinja2.AssetsExtension']
     )
 
-    site.env.assets_environment = AssetsEnvironment(directory=config['OUTPUT_DIR'], url='/', cache='assets/.webassets-cache')
+    site.env.assets_environment = AssetsEnvironment(
+        directory=config['OUTPUT_DIR'],
+        url='/',
+        cache=os.path.join(config['ASSETS_DIR'], 'assets', '.webassets-cache')
+    )
     site.env.assets_environment.append_path(config['ASSETS_DIR'])
 
     for name, args, kwargs in config['ASSETS_BUNDLES']:
