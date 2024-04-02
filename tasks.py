@@ -50,7 +50,11 @@ def clean(c: Context) -> None:
     os.makedirs(config['OUTPUT_DIR'])
 
 
-@task
+@task(
+    help={
+        'watch': 'Regénère automatiquement le site lorsque les templates sont modifiés'
+    }
+)
 def build(c: Context, watch: bool = False) -> None:
     """Génère le rendu du site"""
     def build_url(path: str, absolute: bool = False) -> str:

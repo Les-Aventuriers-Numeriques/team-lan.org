@@ -3,4 +3,4 @@ htmlmin==0.1.12
 staticjinja==5.0.0
 environs==11.0.0
 webassets==2.0
-cssutils==2.9.0
+cssutils==2.10.2
