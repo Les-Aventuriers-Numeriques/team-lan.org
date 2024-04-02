@@ -4,6 +4,10 @@ Le [site web principal](https://team-lan.org/) de la team Les Aventuriers Numér
 
 [![Publication](https://github.com/Les-Aventuriers-Numeriques/team-lan.org/actions/workflows/publish.yml/badge.svg)](https://github.com/Les-Aventuriers-Numeriques/team-lan.org/actions/workflows/publish.yml)
 
+Il s'agit d'un site statique simple généré à partir de templates [Jinja](https://jinja.palletsprojects.com/en/3.1.x/) par
+[staticjinja](https://staticjinja.readthedocs.io/en/stable/index.html), avec quelques lignes de code permettant d'agrémenter
+le tout.
+
 ## Prérequis
 
   - Python >= 3.12
