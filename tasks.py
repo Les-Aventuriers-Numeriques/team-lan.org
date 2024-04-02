@@ -17,8 +17,6 @@ env.read_env()
 
 default_config = {
     'SERVE_PORT': 8080,
-    'BASE_URL': 'http://localhost:8080/',
-    'MINIFY_XML': False,
     'OUTPUT_DIR': 'output',
     'STATIC_DIR': 'static',
     'STATIC_FILES_TO_COPY': [],
@@ -34,8 +32,8 @@ config.update({
 })
 
 config.update({
-    'BASE_URL': env.str('BASE_URL', config['BASE_URL']),
-    'MINIFY_XML': env.bool('MINIFY_XML', config['MINIFY_XML']),
+    'BASE_URL': env.str('BASE_URL', 'http://localhost:8080/'),
+    'MINIFY_XML': env.bool('MINIFY_XML', False),
 })
 
 

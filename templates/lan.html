@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block content %}
-    <p>Comme chaque année depuis 2023, nous organisons une LAN party privée dont voici les informations à propos de l'édition de cette année. Il n'est possible de la joindre que sur notre invitation, toutefois il n'est pas improbable qu'un jour, nous l'ouvrions au public.</p>
+    <p>Comme chaque année depuis 2023, nous organisons une LAN party privée dont voici les informations à propos de l'édition de cette année. <strong>Il n'est possible de la joindre que sur notre invitation expresse</strong>, toutefois il n'est pas improbable qu'un jour, nous l'ouvrions au public.</p>
 
     <section class="info">
         <article>
@@ -40,6 +40,8 @@
                         {% include '_games.html' %}
                     {% endwith %}
                 </div>
+
+                <p class="mb-0">Cette liste n'est évidemment pas figée ni exhaustive, rien n'empêche plusieurs joueurs de lancer spontanément une partie sur un jeu qui n'est pas listé.</p>
             {% else %}
                 <p class="mb-0">À définir.</p>
             {% endif %}
