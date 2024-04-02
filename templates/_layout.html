@@ -1,3 +1,20 @@
+{% set social_links = [
+    ('discord', 'https://discord.gg/vQYv4MfQf8'),
+    ('steam', 'https://steamcommunity.com/groups/Les-Aventuriers-Numeriques'),
+    ('github', 'https://github.com/Les-Aventuriers-Numeriques'),
+] %}
+
+{% set team_name = 'Les Aventuriers Numériques' %}
+
+{% set motto = 'Une team multigaming francophone et conviviale' %}
+
+{% set default_jsonld_schema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    'name': self.title(),
+    'description': self.description(),
+} %}
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -19,6 +36,8 @@
     <link rel="canonical" href="{{ self.canonical_url() }}">
 
     <link rel="icon" href="{{ url('/favicon.ico') }}" sizes="32x32 48x48">
+
+    <script type="application/ld+json">{{ deepupdate(default_jsonld_schema, jsonld_schema)|tojson(None if config['MINIFY_JSON'] else 4) }}</script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.0.6/css/pico.orange.min.css">
     {% block cssfiles %}{% endblock %}
@@ -42,7 +61,7 @@
 
     <footer class="container">
         <div class="text-center">
-            © {{ current_year }} <a href="https://epoc.fr/">Maxime "Epoc" Gross</a> et <a href="https://github.com/Les-Aventuriers-Numeriques/team-lan.org/graphs/contributors">contributeurs</a>
+            © {{ datetime.now().year }} <a href="https://epoc.fr/">Maxime "Epoc" Gross</a> et <a href="https://github.com/Les-Aventuriers-Numeriques/team-lan.org/graphs/contributors">contributeurs</a>
         </div>
 
         <div>

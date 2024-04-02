@@ -1,5 +1,40 @@
 {% extends '_layout.html' %}
 
+{% set games_being_played = [
+    (1158310, 'Crusader Kings III'),
+    (1239080, 'Door Kickers 2'),
+    (394360, 'Hearts of Iron IV'),
+    (686810, 'Hell Let Loose'),
+    (232090, 'Killing Floor 2'),
+    (578080, 'PUBG'),
+    (526870, 'Satisfactory'),
+] %}
+
+{% set previously_played_games = [
+    (1015140, '10 Miles To Safety'),
+    (33900, 'Arma 2'),
+    (107410, 'Arma 3'),
+    (813780, 'Age of Empires II'),
+    (681590, 'Blitzkrieg Mod'),
+    (302670, 'Call to Arms'),
+    (231430, 'Company of Heroes 2'),
+    (248610, 'Door Kickers'),
+    (1250, 'Killing Floor'),
+    ('https://losangelesmod.com/', 'lamod', 'Los Angeles Mod'),
+    (244450, 'Men of War: Assault Squad 2'),
+    (1127400, 'Mindustry'),
+    (453090, 'Parkitect'),
+    (233450, 'Prison Architect'),
+    ('https://www.realitymod.com/', 'pr', 'Project Reality: Battlefield 2'),
+    (252950, 'Rocket League'),
+    (270150, 'RUNNING WITH RIFLES'),
+    (393380, 'Squad'),
+    (377300, 'Thunder Tier One'),
+    (236390, 'War Thunder'),
+] %}
+
+{% set jsonld_schema = {} %}
+
 {% block title %}En quelques mots{% endblock %}
 
 {% block description %}La team multigaming {{ team_name }} présentée en quelques mots{% endblock %}

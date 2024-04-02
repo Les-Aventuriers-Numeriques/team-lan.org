@@ -1,13 +1,16 @@
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from webassets import Environment as AssetsEnvironment
+from deepmerge import conservative_merger as merger
 from htmlmin import minify as minify_xml
 from invoke import task, Context
+from datetime import datetime
 from markupsafe import Markup
 from staticjinja import Site
 from http import HTTPStatus
 from jinja2 import Template
 from copy import deepcopy
 from environs import Env
+from typing import Dict
 import config as actual_config
 import shutil
 import os
@@ -19,6 +22,7 @@ default_config = {
     'SERVE_PORT': 8080,
     'BASE_URL': 'http://localhost:8080/',
     'MINIFY_XML': False,
+    'MINIFY_JSON': False,
     'OUTPUT_DIR': 'output',
     'STATIC_DIR': 'static',
     'STATIC_FILES_TO_COPY': [],
@@ -36,6 +40,7 @@ config.update({
 config.update({
     'BASE_URL': env.str('BASE_URL', config['BASE_URL']),
     'MINIFY_XML': env.bool('MINIFY_XML', config['MINIFY_XML']),
+    'MINIFY_JSON': env.bool('MINIFY_JSON', config['MINIFY_JSON']),
 })
 
 
@@ -68,7 +73,7 @@ def build(c: Context, watch: bool = False) -> None:
         with open(os.path.join(config['ASSETS_DIR'], 'icons', f'{name}.svg'), 'r') as f:
             return Markup(f.read())
 
-    def minify_template_xml(site: Site, template: Template, **kwargs) -> None:
+    def minify_xml_template(site: Site, template: Template, **kwargs) -> None:
         """Minifie le rendu d'un template Jinja XML (et par extension, HTML également)"""
         out = os.path.join(site.outpath, template.name)
 
@@ -83,6 +88,10 @@ def build(c: Context, watch: bool = False) -> None:
                     remove_comments=True
                 )
             )
+
+    def deepupdate(base: Dict, target: Dict) -> Dict:
+        """Fusionne récursivement deux dictionnaires sans les modifier (en crée un nouveau)"""
+        return merger.merge(deepcopy(base), target)
 
     print('Copie des fichiers statiques vers "{OUTPUT_DIR}"...'.format(**config))
 
@@ -103,12 +112,15 @@ def build(c: Context, watch: bool = False) -> None:
         outpath=config['OUTPUT_DIR'],
         mergecontexts=True,
         env_globals={
+            'config': config,
             'url': build_url,
             'icon': embed_svg_icon,
+            'datetime': datetime,
+            'deepupdate': deepupdate,
         },
-        contexts=config['CONTEXTS'],
+        contexts=config['CONTEXTS'] or None,
         rules=[
-            (r'.*\.(html|xml)', minify_template_xml)
+            (r'.*\.(html|xml)', minify_xml_template)
         ] if config['MINIFY_XML'] else None,
         extensions=['webassets.ext.jinja2.AssetsExtension']
     )

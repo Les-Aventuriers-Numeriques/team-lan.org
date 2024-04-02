@@ -28,6 +28,7 @@ La configuration du site. Tous les chemins sont relatifs au répertoire racine, 
 | `SERVE_PORT`                 | int                                             | Non      | `8080`                   | Le port d'écoute du serveur HTTP lancé par `invoke serve`                                                                                                                          |
 | `BASE_URL`                   | str                                             | Non      | `http://localhost:8080/` | Protocole et domaine de base pour les URLs absolues. La variable d'environnement associée est prioritaire lorsqu'elle est définie                                                  |
 | `MINIFY_XML`                 | bool                                            | Non      | `False`                  | Minification ou non de l'XML (et par extension, de l'HTML également) résultant. La variable d'environnement associée est prioritaire lorsqu'elle est définie                       |
+| `MINIFY_JSON`                | bool                                            | Non      | `False`                  | Minification ou non du JSON résultant. La variable d'environnement associée est prioritaire lorsqu'elle est définie                                                                |
 | `OUTPUT_DIR`                 | str                                             | Non      | `output`                 | Le répertoire dans lequel le site rendu sera enregistré                                                                                                                            |
 | `STATIC_DIR`                 | str                                             | Non      | `static`                 | Le répertoire contenant tous les fichiers statiques                                                                                                                                |
 | `STATIC_FILES_TO_COPY`       | List[str]                                       | Non      | `[]`                     | La liste des fichiers statiques à copier (relatif à `STATIC_DIR`)                                                                                                                  |
@@ -41,14 +42,15 @@ La configuration du site. Tous les chemins sont relatifs au répertoire racine, 
 Les variables d'environnement suivantes sont destinées à être utilisées pour le déploiement du site (`invoke publish`).
 Créez-les de façon classique ou dans un fichier `.env` les contenant.
 
-| Nom          | Type | Requis ?                  | Défaut                     | Description                                                                    |
-|--------------|------|---------------------------|----------------------------|--------------------------------------------------------------------------------|
-| `BASE_URL`   | str  | Non mais à définir        | Configuration `BASE_URL`   | Protocole et domaine de base pour les URLs absolues                            |
-| `MINIFY_XML` | bool | Non mais `True` conseillé | Configuration `MINIFY_XML` | Minification ou non de l'XML (et par extension, de l'HTML également) résultant |
-| `SSH_USER`   | str  | Oui                       |                            | Nom d'utilisateur pour le déploiement SSH                                      |
-| `SSH_HOST`   | str  | Oui                       |                            | Hôte cible du déploiement SSH                                                  |
-| `SSH_PORT`   | int  | Non                       | `22`                       | Port de l'hôte du déploiement SSH                                              |
-| `SSH_PATH`   | str  | Oui                       |                            | Chemin absolu du répertoire de déploiement SSH                                 |
+| Nom           | Type | Requis ?                  | Défaut                      | Description                                                                    |
+|---------------|------|---------------------------|-----------------------------|--------------------------------------------------------------------------------|
+| `BASE_URL`    | str  | Non mais à définir        | Configuration `BASE_URL`    | Protocole et domaine de base pour les URLs absolues                            |
+| `MINIFY_XML`  | bool | Non mais `True` conseillé | Configuration `MINIFY_XML`  | Minification ou non de l'XML (et par extension, de l'HTML également) résultant |
+| `MINIFY_JSON` | bool | Non mais `True` conseillé | Configuration `MINIFY_JSON` | Minification ou non du JSON résultant                                          |
+| `SSH_USER`    | str  | Oui                       |                             | Nom d'utilisateur pour le déploiement SSH                                      |
+| `SSH_HOST`    | str  | Oui                       |                             | Hôte cible du déploiement SSH                                                  |
+| `SSH_PORT`    | int  | Non                       | `22`                        | Port de l'hôte du déploiement SSH                                              |
+| `SSH_PATH`    | str  | Oui                       |                             | Chemin absolu du répertoire de déploiement SSH                                 |
 
 ### Apache
 
