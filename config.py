@@ -17,7 +17,6 @@ lan_current_attendees = 9
 lan_max_attendees = 10
 team_name = 'Les Aventuriers Numériques'
 motto = 'Une team multigaming francophone et conviviale'
-discord_url = 'https://discord.gg/vQYv4MfQf8'
 
 CONTEXTS = [
     (r'index\.html', {
@@ -73,16 +72,12 @@ CONTEXTS = [
                 '@type': 'City',
                 'name': 'Arnay-le-Duc',
             },
-            {
-                '@type': 'VirtualLocation',
-                'url': discord_url,
-            },
         ],
         'lan_games': [],
     }),
     (r'.*\.html', {
         'social_links': [
-            ('discord', discord_url),
+            ('discord', 'https://discord.gg/vQYv4MfQf8'),
             ('steam', 'https://steamcommunity.com/groups/Les-Aventuriers-Numeriques'),
             ('github', 'https://github.com/Les-Aventuriers-Numeriques'),
         ],

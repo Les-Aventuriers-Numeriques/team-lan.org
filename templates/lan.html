@@ -1,21 +1,30 @@
 {% extends '_layout.html' %}
 
-{% set jsonld_schema = dictmerge(base_jsonld_schema, {
-    '@type': 'SocialEvent',
-    'eventAttendanceMode': 'https://schema.org/MixedEventAttendanceMode',
-    'organizer': jsonld_organization,
-    'startDate': '2024-11-07',
-    'endDate': '2024-11-11',
-    'location': locations,
-    'maximumAttendeeCapacity': max_attendees,
-    'remainingAttendeeCapacity': max_attendees - current_attendees,
-}) %}
+{% from '_layout.html' import jsonld_organization, base_jsonld_schema %}
 
 {% block title %}2ème LAN annuelle{% endblock %}
 
 {% block description %}Infos à propos de la LAN annuelle organisée par la team {{ team_name }}{% endblock %}
 
 {% block canonical_url %}{{ url('/lan', absolute=True) }}{% endblock %}
+
+{% block jsonld_schema -%}
+    {{ base_jsonld_schema|dictmerge({
+        'about': {
+            '@type': 'SocialEvent',
+            'name': self.title(),
+            'description': self.title(),
+            'image': self.image(),
+            'eventAttendanceMode': 'https://schema.org/OfflineEventAttendanceMode',
+            'organizer': jsonld_organization,
+            'startDate': '2024-11-07',
+            'endDate': '2024-11-11',
+            'location': locations,
+            'maximumAttendeeCapacity': max_attendees,
+            'remainingAttendeeCapacity': max_attendees - current_attendees,
+        },
+    })|tojsonm }}
+{%- endblock %}
 
 {% block cssfiles %}
     {% assets 'css_lan' %}<link rel="stylesheet" href="{{ ASSET_URL }}">{% endassets %}
@@ -32,7 +41,7 @@
         </article>
         <article>
             <header>Où ?</header>
-            <p class="mb-0">C'est en cours de définition, mais cela se passera dans l'une des villes de {{ jsonld_schema.location|selectattr('@type', 'eq', 'City')|join(', ', attribute='name') }}.</p>
+            <p class="mb-0">C'est en cours de définition, mais cela se passera dans l'une des villes de {{ locations|selectattr('@type', 'eq', 'City')|join(', ', attribute='name') }}.</p>
         </article>
         <article>
             <header>Qui ?</header>

@@ -48,8 +48,8 @@
 
     <link rel="icon" href="{{ url('/favicon.ico') }}" sizes="32x32 48x48">
 
-    {% if jsonld_schema %}
-        <script type="application/ld+json">{{ tojsonm(jsonld_schema) }}</script>
+    {% if self.jsonld_schema() %}
+        <script type="application/ld+json">{% block jsonld_schema %}{% endblock %}</script>
     {% endif %}
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.0.6/css/pico.orange.min.css">

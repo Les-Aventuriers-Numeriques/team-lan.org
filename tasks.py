@@ -122,6 +122,8 @@ def build(c: Context, watch: bool = False) -> None:
             'config': config,
             'url': build_url,
             'icon': embed_svg_icon,
+        },
+        filters={
             'tojsonm': dump_minified_json,
             'dictmerge': merge_dicts,
         },

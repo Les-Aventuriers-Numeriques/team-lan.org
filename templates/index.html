@@ -1,16 +1,20 @@
 {% extends '_layout.html' %}
 
-{% set jsonld_schema = dictmerge(base_jsonld_schema, {
-    '@type': 'AboutPage',
-    'mainEntity': jsonld_organization,
-    'about': jsonld_organization,
-}) %}
+{% from '_layout.html' import jsonld_organization, base_jsonld_schema %}
 
 {% block title %}En quelques mots{% endblock %}
 
 {% block description %}La team multigaming {{ team_name }} présentée en quelques mots{% endblock %}
 
 {% block canonical_url %}{{ url('/', absolute=True) }}{% endblock %}
+
+{% block jsonld_schema -%}
+    {{ base_jsonld_schema|dictmerge({
+        '@type': 'AboutPage',
+        'mainEntity': jsonld_organization,
+        'about': jsonld_organization,
+    })|tojsonm }}
+{%- endblock %}
 
 {% block cssfiles %}
     {% assets 'css_base' %}<link rel="stylesheet" href="{{ ASSET_URL }}">{% endassets %}
