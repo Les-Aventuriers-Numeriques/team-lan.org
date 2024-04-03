@@ -1,6 +1,7 @@
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from webassets import Environment as AssetsEnvironment
 from deepmerge import conservative_merger as merger
+from jinja2.utils import htmlsafe_json_dumps
 from htmlmin import minify as minify_xml
 from invoke import task, Context
 from datetime import datetime
@@ -23,6 +24,7 @@ default_config = {
     'BASE_URL': 'http://localhost:8080/',
     'MINIFY_XML': False,
     'MINIFY_JSON': False,
+    'SEARCH_DIR': 'site',
     'OUTPUT_DIR': 'output',
     'STATIC_DIR': 'static',
     'STATIC_FILES_TO_COPY': [],
@@ -89,11 +91,15 @@ def build(c: Context, watch: bool = False) -> None:
                 )
             )
 
-    def deepupdate(base: Dict, target: Dict) -> Dict:
-        """Fusionne récursivement deux dictionnaires sans les modifier (en crée un nouveau)"""
-        return merger.merge(deepcopy(base), target)
+    def generate_jsonld(base: Dict, target: Dict) -> Markup:
+        """Fusionne récursivement deux dictionnaires sans les modifier et retourne leur représentation JSON"""
+        return htmlsafe_json_dumps(
+            merger.merge(deepcopy(base), target),
+            indent=None if config['MINIFY_JSON'] else 4,
+            separators=(',', ':') if config['MINIFY_JSON'] else None
+        )
 
-    print('Copie des fichiers statiques vers "{OUTPUT_DIR}"...'.format(**config))
+    print('Copie des fichiers statiques de {STATIC_DIR} vers "{OUTPUT_DIR}"...'.format(**config))
 
     for file in config['STATIC_FILES_TO_COPY']:
         dir_name = os.path.dirname(file)
@@ -106,9 +112,10 @@ def build(c: Context, watch: bool = False) -> None:
     for directory in config['STATIC_DIRECTORIES_TO_COPY']:
         shutil.copytree(os.path.join(config['STATIC_DIR'], directory), os.path.join(config['OUTPUT_DIR'], directory), dirs_exist_ok=True)
 
-    print('Génération du rendu vers "{OUTPUT_DIR}"...'.format(**config))
+    print('Génération du rendu de {SEARCH_DIR} vers "{OUTPUT_DIR}"...'.format(**config))
 
     site = Site.make_site(
+        searchpath=config['SEARCH_DIR'],
         outpath=config['OUTPUT_DIR'],
         mergecontexts=True,
         env_globals={
@@ -116,7 +123,7 @@ def build(c: Context, watch: bool = False) -> None:
             'url': build_url,
             'icon': embed_svg_icon,
             'datetime': datetime,
-            'deepupdate': deepupdate,
+            'jsonld': generate_jsonld,
         },
         contexts=config['CONTEXTS'] or None,
         rules=[
