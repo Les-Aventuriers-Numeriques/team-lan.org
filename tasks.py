@@ -1,6 +1,5 @@
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from webassets import Environment as AssetsEnvironment
-from deepmerge import conservative_merger as merger
 from jinja2.utils import htmlsafe_json_dumps
 from htmlmin import minify as minify_xml
 from invoke import task, Context
@@ -91,10 +90,16 @@ def build(c: Context, watch: bool = False) -> None:
                 )
             )
 
-    def generate_jsonld(base: Dict, target: Dict) -> Markup:
-        """Fusionne récursivement deux dictionnaires sans les modifier et retourne leur représentation JSON"""
+    def generate_jsonld(data: Dict) -> Markup:
+        """Encode les données fournies au format JSON-LD"""
+        jsonld = {
+            '@context': 'https://schema.org',
+        }
+
+        jsonld.update(data)
+
         return htmlsafe_json_dumps(
-            merger.merge(deepcopy(base), target),
+            jsonld,
             indent=None if config['MINIFY_JSON'] else 4,
             separators=(',', ':') if config['MINIFY_JSON'] else None
         )
