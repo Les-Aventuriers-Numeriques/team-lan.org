@@ -1,12 +1,23 @@
-{% set social_links = [
-    ('discord', 'https://discord.gg/vQYv4MfQf8'),
-    ('steam', 'https://steamcommunity.com/groups/Les-Aventuriers-Numeriques'),
-    ('github', 'https://github.com/Les-Aventuriers-Numeriques'),
-] %}
+{% set jsonld_organization = {
+    '@type': 'Organization',
+    'name': team_name,
+    'alternateName': 'LAN',
+    'description': motto,
+    'slogan': motto,
+    'url': url('', absolute=True),
+    'image': url('/images/logo_256.png', absolute=True),
+    'logo': url('/images/logo_256.png', absolute=True),
+    'foundingDate': '2024-03-08',
+} %}
 
-{% set team_name = 'Les Aventuriers Numériques' %}
-
-{% set motto = 'Une team multigaming francophone et conviviale' %}
+{% set base_jsonld_schema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    'name': self.title() or team_name,
+    'description': self.description(),
+    'image': self.image(),
+    'url': self.canonical_url() or None,
+} %}
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -20,18 +31,25 @@
     <meta name="description" content="{% block description %}{{ motto }}{% endblock %}">
 
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{% block canonical_url %}{% endblock %}">
+
+    {% if self.canonical_url() %}
+        <meta property="og:url" content="{% block canonical_url %}{% endblock %}">
+    {% endif %}
+
     <meta property="og:site_name" content="{{ team_name }}">
     <meta property="og:title" content="{{ self.title() or team_name }}">
     <meta property="og:description" content="{{ self.description() }}">
     <meta property="og:image" content="{% block image %}{{ url('/images/logo_256.png', absolute=True) }}{% endblock %}">
     <meta property="og:locale" content="fr_FR">
-    <link rel="canonical" href="{{ self.canonical_url() }}">
+
+    {% if self.canonical_url() %}
+        <link rel="canonical" href="{{ self.canonical_url() }}">
+    {% endif %}
 
     <link rel="icon" href="{{ url('/favicon.ico') }}" sizes="32x32 48x48">
 
     {% if jsonld_schema %}
-        <script type="application/ld+json">{{ jsonld(jsonld_schema) }}</script>
+        <script type="application/ld+json">{{ tojsonm(jsonld_schema) }}</script>
     {% endif %}
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.0.6/css/pico.orange.min.css">
@@ -56,7 +74,7 @@
 
     <footer class="container">
         <div class="text-center">
-            © {{ datetime.now().year }} <a href="https://epoc.fr/">Maxime "Epoc" Gross</a> et <a href="https://github.com/Les-Aventuriers-Numeriques/team-lan.org/graphs/contributors">contributeurs</a>
+            © {{ current_year }} <a href="https://epoc.fr/">Maxime "Epoc" Gross</a> et <a href="https://github.com/Les-Aventuriers-Numeriques/team-lan.org/graphs/contributors">contributeurs</a>
         </div>
 
         <div>

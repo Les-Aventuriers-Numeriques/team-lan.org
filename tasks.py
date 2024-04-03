@@ -3,12 +3,10 @@ from webassets import Environment as AssetsEnvironment
 from jinja2.utils import htmlsafe_json_dumps
 from htmlmin import minify as minify_xml
 from invoke import task, Context
-from datetime import datetime
 from markupsafe import Markup
 from staticjinja import Site
 from http import HTTPStatus
 from jinja2 import Template
-from copy import deepcopy
 from environs import Env
 from typing import Dict
 import config as actual_config
@@ -33,10 +31,9 @@ default_config = {
     'CONTEXTS': [],
 }
 
-config = deepcopy(default_config)
-config.update({
+config = default_config | {
     k: v for k, v in vars(actual_config).items() if k.isupper()
-})
+}
 
 config.update({
     'BASE_URL': env.str('BASE_URL', config['BASE_URL']),
@@ -90,19 +87,17 @@ def build(c: Context, watch: bool = False) -> None:
                 )
             )
 
-    def generate_jsonld(data: Dict) -> Markup:
-        """Encode les données fournies au format JSON-LD"""
-        jsonld = {
-            '@context': 'https://schema.org',
-        }
-
-        jsonld.update(data)
-
+    def dump_minified_json(data: Dict) -> Markup:
+        """Encode les données fournies au format JSON, au format minifié ou non selon la configuration"""
         return htmlsafe_json_dumps(
-            jsonld,
+            data,
             indent=None if config['MINIFY_JSON'] else 4,
             separators=(',', ':') if config['MINIFY_JSON'] else None
         )
+
+    def merge_dicts(left: Dict, right: Dict) -> Dict:
+        """Fusionne deux dictionnaires"""
+        return left | right
 
     print('Copie des fichiers statiques de {STATIC_DIR} vers "{OUTPUT_DIR}"...'.format(**config))
 
@@ -127,8 +122,8 @@ def build(c: Context, watch: bool = False) -> None:
             'config': config,
             'url': build_url,
             'icon': embed_svg_icon,
-            'datetime': datetime,
-            'jsonld': generate_jsonld,
+            'tojsonm': dump_minified_json,
+            'dictmerge': merge_dicts,
         },
         contexts=config['CONTEXTS'] or None,
         rules=[

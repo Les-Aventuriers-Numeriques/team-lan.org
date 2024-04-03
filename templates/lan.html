@@ -1,8 +1,15 @@
 {% extends '_layout.html' %}
 
-{% set lan_games = [] %}
-
-{% set jsonld_schema = {} %}
+{% set jsonld_schema = dictmerge(base_jsonld_schema, {
+    '@type': 'SocialEvent',
+    'eventAttendanceMode': 'https://schema.org/MixedEventAttendanceMode',
+    'organizer': jsonld_organization,
+    'startDate': '2024-11-07',
+    'endDate': '2024-11-11',
+    'location': locations,
+    'maximumAttendeeCapacity': max_attendees,
+    'remainingAttendeeCapacity': max_attendees - current_attendees,
+}) %}
 
 {% block title %}2ème LAN annuelle{% endblock %}
 
@@ -25,11 +32,11 @@
         </article>
         <article>
             <header>Où ?</header>
-            <p class="mb-0">C'est en cours de définition, mais cela se passera quelque part dans la zone de Chalon-sur-Saône, Beaune, Verdun-sur-le-Doubs ou Arnay-le-Duc.</p>
+            <p class="mb-0">C'est en cours de définition, mais cela se passera dans l'une des villes de {{ jsonld_schema.location|selectattr('@type', 'eq', 'City')|join(', ', attribute='name') }}.</p>
         </article>
         <article>
             <header>Qui ?</header>
-            <p class="mb-0">À ce jour (30 mars), il est prévu entre 6 et 9 joueurs.</p>
+            <p class="mb-0">À ce jour (3 mars), il est prévu {{ current_attendees }} joueurs.</p>
         </article>
         <article>
             <header>Combien ?</header>
