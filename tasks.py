@@ -24,7 +24,7 @@ default_config = {
     'BASE_URL': 'http://localhost:8080/',
     'MINIFY_XML': False,
     'MINIFY_JSON': False,
-    'SEARCH_DIR': 'site',
+    'SEARCH_DIR': 'templates',
     'OUTPUT_DIR': 'output',
     'STATIC_DIR': 'static',
     'STATIC_FILES_TO_COPY': [],
