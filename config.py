@@ -1,4 +1,6 @@
-from datetime import datetime
+from datetime import date
+
+LOCALE = ['fr-FR', 'fr_FR', 'fr_FR.UTF8', 'fr_FR.UTF-8']
 
 STATIC_FILES_TO_COPY = [
     'favicon.ico',
@@ -55,6 +57,8 @@ CONTEXTS = [
     (r'lan\.html', {
         'current_attendees': lan_current_attendees,
         'max_attendees': lan_max_attendees,
+        'start_date': date(2024, 11, 7),
+        'end_date': date(2024, 11, 11),
         'locations': [
             {
                 '@type': 'City',
@@ -83,6 +87,7 @@ CONTEXTS = [
         ],
         'team_name': team_name,
         'motto': motto,
-        'current_year': datetime.now().year,
+        'today': date.today(),
+        'team_founded': date(2024, 3, 8),
     })
 ]

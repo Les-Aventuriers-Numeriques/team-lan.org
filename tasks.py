@@ -10,6 +10,7 @@ from jinja2 import Template
 from environs import Env
 from typing import Dict
 import config as actual_config
+import locale
 import shutil
 import os
 
@@ -17,6 +18,7 @@ env = Env()
 env.read_env()
 
 default_config = {
+    'LOCALE': None,
     'SERVE_PORT': 8080,
     'BASE_URL': 'http://localhost:8080/',
     'MINIFY_XML': False,
@@ -40,6 +42,24 @@ config.update({
     'MINIFY_XML': env.bool('MINIFY_XML', config['MINIFY_XML']),
     'MINIFY_JSON': env.bool('MINIFY_JSON', config['MINIFY_JSON']),
 })
+
+if config['LOCALE']:
+    locale_successfully_set = False
+
+    for code in config['LOCALE']:
+        try:
+            locale.setlocale(locale.LC_ALL, code)
+
+            locale_successfully_set = True
+
+            print(f'Locale système définie à {code}')
+
+            break
+        except locale.Error:
+            pass
+
+    if not locale_successfully_set:
+        print('Impossible de définir la locale système')
 
 
 @task
@@ -131,7 +151,11 @@ def build(c: Context, watch: bool = False) -> None:
         rules=[
             (r'.*\.(html|xml)', minify_xml_template)
         ] if config['MINIFY_XML'] else None,
-        extensions=['webassets.ext.jinja2.AssetsExtension']
+        extensions=['webassets.ext.jinja2.AssetsExtension'],
+        env_kwargs={
+            'trim_blocks': True,
+            'lstrip_blocks': True,
+        }
     )
 
     site.env.assets_environment = AssetsEnvironment(

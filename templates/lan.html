@@ -1,6 +1,6 @@
 {% extends '_layout.html' %}
 
-{% from '_layout.html' import jsonld_organization, base_jsonld_schema %}
+{% from '_layout.html' import jsonld_organization, base_jsonld_schema with context %}
 
 {% block title %}2ème LAN annuelle{% endblock %}
 
@@ -8,7 +8,7 @@
 
 {% block canonical_url %}{{ url('/lan', absolute=True) }}{% endblock %}
 
-{% block jsonld_schema -%}
+{% block jsonld_schema %}
     {{ base_jsonld_schema|dictmerge({
         'about': {
             '@type': 'SocialEvent',
@@ -17,14 +17,14 @@
             'image': self.image(),
             'eventAttendanceMode': 'https://schema.org/OfflineEventAttendanceMode',
             'organizer': jsonld_organization,
-            'startDate': '2024-11-07',
-            'endDate': '2024-11-11',
+            'startDate': start_date.isoformat(),
+            'endDate': end_date.isoformat(),
             'location': locations,
             'maximumAttendeeCapacity': max_attendees,
             'remainingAttendeeCapacity': max_attendees - current_attendees,
         },
     })|tojsonm }}
-{%- endblock %}
+{% endblock %}
 
 {% block cssfiles %}
     {% assets 'css_lan' %}<link rel="stylesheet" href="{{ ASSET_URL }}">{% endassets %}
@@ -36,7 +36,7 @@
     <section class="info">
         <article>
             <header>Quand ?</header>
-            <p>Du 7 au 11 novembre 2024.</p>
+            <p>Du {{ start_date.day if start_date.month == end_date.month or start_date.strftime('%#d %B') }} au {{ end_date.strftime('%#d %B %Y') }}.</p>
             <p class="mb-0">Aucune obligation de présence évidemment : vous venez et repartez quand vous voulez.</p>
         </article>
         <article>

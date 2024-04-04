@@ -7,7 +7,7 @@
     'url': url('', absolute=True),
     'image': url('/images/logo_256.png', absolute=True),
     'logo': url('/images/logo_256.png', absolute=True),
-    'foundingDate': '2024-03-08',
+    'foundingDate': team_founded.isoformat(),
 } %}
 
 {% set base_jsonld_schema = {
@@ -75,7 +75,7 @@
 
     <footer class="container">
         <div class="text-center">
-            © {{ current_year }} <a href="https://epoc.fr/">Maxime "Epoc" Gross</a> et <a href="https://github.com/Les-Aventuriers-Numeriques/team-lan.org/graphs/contributors">contributeurs</a>
+            © {{ today.year }} <a href="https://epoc.fr/">Maxime "Epoc" Gross</a> et <a href="https://github.com/Les-Aventuriers-Numeriques/team-lan.org/graphs/contributors">contributeurs</a>
         </div>
 
         <div>

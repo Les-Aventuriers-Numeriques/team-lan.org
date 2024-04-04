@@ -1,6 +1,6 @@
 {% extends '_layout.html' %}
 
-{% from '_layout.html' import jsonld_organization, base_jsonld_schema %}
+{% from '_layout.html' import jsonld_organization, base_jsonld_schema with context %}
 
 {% block title %}En quelques mots{% endblock %}
 
@@ -8,12 +8,12 @@
 
 {% block canonical_url %}{{ url('/', absolute=True) }}{% endblock %}
 
-{% block jsonld_schema -%}
+{% block jsonld_schema %}
     {{ base_jsonld_schema|dictmerge({
         '@type': 'AboutPage',
         'about': jsonld_organization,
     })|tojsonm }}
-{%- endblock %}
+{% endblock %}
 
 {% block cssfiles %}
     {% assets 'css_base' %}<link rel="stylesheet" href="{{ ASSET_URL }}">{% endassets %}
@@ -23,7 +23,7 @@
     <section>
         <p>Nous sommes un regroupement de joueurs partageant la même passion dont les origines remontent à l'âge d'or de <i>Project Reality</i>, le mod <i>Battlefield 2</i> le plus notoire.</p>
         <p>À l'époque, les membres historiques de ce groupe pouvaient se compter sur les doigts d'une main, mais de nombreuses péripéties au fil des années nous ont permises de rencontrer des joueurs partageant nos valeurs, qui ont décidé de jouer régulièrement à nos côtés, tout en nous permettant de nous diversifier et d'évoluer.</p>
-        <p>La team <i>{{ team_name }}</i> est donc née en mars 2024 dans l'esprit convivial qui nous décrit.</p>
+        <p>La team <i>{{ team_name }}</i> est donc née le {{ team_founded.strftime('%#d %B %Y') }} dans l'esprit convivial qui nous décrit.</p>
         <p>Et sinon, nous organisons depuis 2023 une <a href="{{ url('/lan') }}">LAN party annuelle</a> privée.</p>
     </section>
 
