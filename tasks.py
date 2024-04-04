@@ -7,15 +7,11 @@ from markupsafe import Markup
 from staticjinja import Site
 from http import HTTPStatus
 from jinja2 import Template
-from environs import Env
 from typing import Dict
 import config as actual_config
 import locale
 import shutil
 import os
-
-env = Env()
-env.read_env()
 
 default_config = {
     'LOCALE': None,
@@ -38,9 +34,9 @@ config = default_config | {
 }
 
 config.update({
-    'BASE_URL': env.str('BASE_URL', config['BASE_URL']),
-    'MINIFY_XML': env.bool('MINIFY_XML', config['MINIFY_XML']),
-    'MINIFY_JSON': env.bool('MINIFY_JSON', config['MINIFY_JSON']),
+    'BASE_URL': os.environ.get('BASE_URL', config['BASE_URL']),
+    'MINIFY_XML': os.environ.get('MINIFY_XML', config['MINIFY_XML']) in (True, 'True'),
+    'MINIFY_JSON': os.environ.get('MINIFY_JSON', config['MINIFY_JSON']) in (True, 'True'),
 })
 
 if config['LOCALE']:
@@ -235,10 +231,10 @@ def serve(c: Context) -> None:
 def publish(c: Context) -> None:
     """Publie le site en production (avec `rsync`)"""
     config.update({
-        'SSH_USER': env.str('SSH_USER'),
-        'SSH_HOST': env.str('SSH_HOST'),
-        'SSH_PORT': env.int('SSH_PORT', 22),
-        'SSH_PATH': env.str('SSH_PATH'),
+        'SSH_USER': os.environ.get('SSH_USER'),
+        'SSH_HOST': os.environ.get('SSH_HOST'),
+        'SSH_PORT': int(os.environ.get('SSH_PORT', 22)),
+        'SSH_PATH': os.environ.get('SSH_PATH'),
     })
 
     c.run(
