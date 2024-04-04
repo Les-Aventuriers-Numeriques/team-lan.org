@@ -8,12 +8,12 @@
 
 {% block canonical_url %}{{ url('/', absolute=True) }}{% endblock %}
 
-{% block jsonld_schema %}
+{% block jsonld_schema -%}
     {{ base_jsonld_schema|dictmerge({
         '@type': 'AboutPage',
         'about': jsonld_organization,
     })|tojsonm }}
-{% endblock %}
+{%- endblock %}
 
 {% block cssfiles %}
     {% assets 'css_base' %}<link rel="stylesheet" href="{{ ASSET_URL }}">{% endassets %}

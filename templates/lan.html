@@ -8,7 +8,7 @@
 
 {% block canonical_url %}{{ url('/lan', absolute=True) }}{% endblock %}
 
-{% block jsonld_schema %}
+{% block jsonld_schema -%}
     {{ base_jsonld_schema|dictmerge({
         'about': {
             '@type': 'SocialEvent',
@@ -24,7 +24,7 @@
             'remainingAttendeeCapacity': max_attendees - current_attendees,
         },
     })|tojsonm }}
-{% endblock %}
+{%- endblock %}
 
 {% block cssfiles %}
     {% assets 'css_lan' %}<link rel="stylesheet" href="{{ ASSET_URL }}">{% endassets %}
