@@ -11,7 +11,6 @@
 {% block jsonld_schema -%}
     {{ base_jsonld_schema|dictmerge({
         '@type': 'AboutPage',
-        'mainEntity': jsonld_organization,
         'about': jsonld_organization,
     })|tojsonm }}
 {%- endblock %}
