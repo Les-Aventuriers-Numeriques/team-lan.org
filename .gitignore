@@ -1,8 +1,6 @@
 venv
 output
-.env
-assets/.webassets-cache/*
-!assets/.webassets-cache/.gitkeep
+assets/.webassets-cache
 
 ### JetBrains template
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio
