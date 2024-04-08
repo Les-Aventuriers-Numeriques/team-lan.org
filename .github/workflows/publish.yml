@@ -39,5 +39,4 @@ jobs:
           MINIFY_JSON: ${{ vars.MINIFY_JSON }}
         run: |
           staticjinjaplus clean
-          staticjinjaplus build
           staticjinjaplus publish
