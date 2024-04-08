@@ -1,1 +1,1 @@
-staticjinjaplus==1.0.0b2
+staticjinjaplus==1.0.0b3
