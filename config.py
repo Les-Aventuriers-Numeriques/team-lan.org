@@ -15,7 +15,7 @@ ASSETS_BUNDLES = [
     ('css_lan', ('css/base.css', 'css/lan.css'), {'filters': 'cssutils', 'output': 'css/lan.min.css'}),
 ]
 
-lan_current_attendees = 8
+lan_current_attendees = 9
 lan_max_attendees = 10
 team_name = 'Les Aventuriers Numériques'
 motto = 'Une team multigaming francophone et conviviale'
