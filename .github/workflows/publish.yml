@@ -38,5 +38,4 @@ jobs:
           MINIFY_XML: ${{ vars.MINIFY_XML }}
           MINIFY_JSON: ${{ vars.MINIFY_JSON }}
         run: |
-          staticjinjaplus clean
           staticjinjaplus publish
