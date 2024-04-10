@@ -79,15 +79,16 @@ CONTEXTS = [
         ],
         'lan_games': [],
     }),
-    (r'.*\.html', {
-        'social_links': [
-            ('discord', 'https://discord.gg/vQYv4MfQf8'),
-            ('steam', 'https://steamcommunity.com/groups/Les-Aventuriers-Numeriques'),
-            ('github', 'https://github.com/Les-Aventuriers-Numeriques'),
-        ],
-        'team_name': team_name,
-        'motto': motto,
-        'today': date.today(),
-        'team_founded': date(2024, 3, 8),
-    })
 ]
+
+GLOBALS = {
+    'social_links': [
+        ('discord', 'https://discord.gg/vQYv4MfQf8'),
+        ('steam', 'https://steamcommunity.com/groups/Les-Aventuriers-Numeriques'),
+        ('github', 'https://github.com/Les-Aventuriers-Numeriques'),
+    ],
+    'team_name': team_name,
+    'motto': motto,
+    'today': date.today(),
+    'team_founded': date(2024, 3, 8),
+}
