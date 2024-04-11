@@ -1,6 +1,6 @@
 # Les Aventuriers Numériques / Site principal
 
-Le [site web principal](https://team-lan.org/) de la team Les Aventuriers Numériques.
+Le [site web principal](https://team-lan.org/) de la team multigaming Les Aventuriers Numériques.
 
 [![Publication](https://github.com/Les-Aventuriers-Numeriques/team-lan.org/actions/workflows/publish.yml/badge.svg)](https://github.com/Les-Aventuriers-Numeriques/team-lan.org/actions/workflows/publish.yml)
 
