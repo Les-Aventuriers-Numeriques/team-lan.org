@@ -19,7 +19,10 @@
             'organizer': jsonld_organization,
             'startDate': start_date.isoformat(),
             'endDate': end_date.isoformat(),
-            'location': locations,
+            'location': {
+                '@type': 'City',
+                'name': location.name,
+            } if location else None,
             'maximumAttendeeCapacity': max_attendees,
             'remainingAttendeeCapacity': max_attendees - current_attendees,
         },
@@ -41,8 +44,13 @@
         </article>
         <article>
             <header>Où ?</header>
-            <p class="mb-0">C'est en cours de définition, mais cela se passera dans l'une des villes de {{ locations|selectattr('@type', 'eq', 'City')|join(', ', attribute='name') }}.</p>
-        </article>
+
+            {% if location %}
+                <p class="mb-0">Ça se passera à <a href="{{ location.url }}">{{ location.name }}</a>.</p>
+             {% else %}
+                <p class="mb-0">À définir.</p>
+            {% endif %}
+       </article>
         <article>
             <header>Qui ?</header>
             <p class="mb-0">Il est prévu {{ current_attendees }} joueurs.</p>
@@ -74,7 +82,7 @@
         <details class="mb-0">
             <summary role="button" class="outline secondary">2023</summary>
 
-            <p class="mb-0">Cette première édition s'est déroulée du 28 octobre au 1er novembre à Amilly (à côté de Montargis, au sud de Paris). Nous étions 6 joueurs, et avions joué à Killing Floor 2, Rocket League, PUBG, RUNNING WITH RIFLES, Call to Arms, Satisfactory, Keep Talking and Nobody Explodes (VR), Arizona Sunshine (VR) et Age of Empires II. Nous avions loué une maison entière, nous avions donc tout à disposition sur place (couchage, cuisine, etc).</p>
+            <p class="mb-0">Cette première édition s'est déroulée du 28 octobre au 1er novembre à <a href="https://maps.app.goo.gl/Wh5GSmUhxcFXVrqo6">Amilly</a> (à côté de Montargis, au sud de Paris). Nous étions 6 joueurs, et avions joué à Killing Floor 2, Rocket League, PUBG, RUNNING WITH RIFLES, Call to Arms, Satisfactory, Keep Talking and Nobody Explodes (VR), Arizona Sunshine (VR) et Age of Empires II. Nous avions loué une maison entière, nous avions donc tout à disposition sur place (couchage, cuisine, etc).</p>
         </details>
     </section>
 {% endblock %}

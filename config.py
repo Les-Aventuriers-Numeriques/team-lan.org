@@ -51,24 +51,10 @@ CONTEXTS = [
         'max_attendees': lan_max_attendees,
         'start_date': date(2024, 11, 7),
         'end_date': date(2024, 11, 11),
-        'locations': [
-            {
-                '@type': 'City',
-                'name': 'Chalon-sur-Saône',
-            },
-            {
-                '@type': 'City',
-                'name': 'Beaune',
-            },
-            {
-                '@type': 'City',
-                'name': 'Verdun-sur-le-Doubs',
-            },
-            {
-                '@type': 'City',
-                'name': 'Arnay-le-Duc',
-            },
-        ],
+        'location': {
+            'name': 'Rully',
+            'url': 'https://maps.app.goo.gl/5Azz9MJbAin44MUt6',
+        },
         'lan_games': [],
     }),
 ]
