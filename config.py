@@ -1,8 +1,12 @@
-from datetime import date
+from babel.dates import get_timezone, format_date
+from datetime import date, datetime
 
-LOCALE = ['fr-FR', 'fr_FR', 'fr_FR.UTF8', 'fr_FR.UTF-8']
+locale = 'fr_FR'
+tzinfo = get_timezone('Europe/Paris')
 
-ASSETS_BUNDLES = [
+USE_HTML_EXTENSION = False
+
+WEBASSETS_BUNDLES = [
     ('css_base', ('css/base.css',), {'filters': 'cssutils', 'output': 'css/base.min.css'}),
     ('css_lan', ('css/base.css', 'css/lan.css'), {'filters': 'cssutils', 'output': 'css/lan.min.css'}),
 ]
@@ -59,7 +63,7 @@ CONTEXTS = [
     }),
 ]
 
-GLOBALS = {
+JINJA_GLOBALS = {
     'social_links': [
         ('discord', 'https://discord.gg/vQYv4MfQf8'),
         ('steam', 'https://steamcommunity.com/groups/Les-Aventuriers-Numeriques'),
@@ -67,6 +71,15 @@ GLOBALS = {
     ],
     'team_name': team_name,
     'motto': motto,
-    'today': date.today(),
+    'now': datetime.now(tz=tzinfo),
     'team_founded': date(2024, 3, 8),
+}
+
+
+def dateformat(*args, **kwargs):
+    return format_date(*args, **kwargs, locale=locale)
+
+
+JINJA_FILTERS = {
+    'dateformat': dateformat,
 }

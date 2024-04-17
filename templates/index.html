@@ -6,7 +6,7 @@
 
 {% block description %}La team multigaming {{ team_name }} présentée en quelques mots{% endblock %}
 
-{% block canonical_url %}{{ url('/', absolute=True) }}{% endblock %}
+{% block canonical_url %}{{ absurl('/') }}{% endblock %}
 
 {% block jsonld_schema -%}
     {{ base_jsonld_schema|dictmerge({
@@ -23,8 +23,8 @@
     <section>
         <p>Nous sommes un regroupement de joueurs partageant la même passion dont les origines remontent à l'âge d'or de <i>Project Reality</i>, le mod <i>Battlefield 2</i> le plus notoire.</p>
         <p>À l'époque, les membres historiques de ce groupe pouvaient se compter sur les doigts d'une main, mais de nombreuses péripéties au fil des années nous ont permises de rencontrer des joueurs partageant nos valeurs, qui ont décidé de jouer régulièrement à nos côtés, tout en nous permettant de nous diversifier et d'évoluer.</p>
-        <p>La team <i>{{ team_name }}</i> est donc née le {{ team_founded.strftime('%d %B %Y') }} dans l'esprit convivial qui nous décrit.</p>
-        <p>Et sinon, nous organisons depuis 2023 une <a href="{{ url('/lan') }}">LAN party annuelle</a> privée.</p>
+        <p>La team <i>{{ team_name }}</i> est donc née le {{ team_founded|dateformat('long') }} dans l'esprit convivial qui nous décrit.</p>
+        <p>Et sinon, nous organisons depuis 2023 une <a href="/lan">LAN party annuelle</a> privée.</p>
     </section>
 
     {% with title = 'En ce moment, on joue à...', games = games_being_played %}

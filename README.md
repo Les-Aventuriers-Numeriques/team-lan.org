@@ -9,7 +9,7 @@ Il s'agit d'un site statique simple généré à partir de templates [Jinja](htt
 
 ## Prérequis
 
-  - Python >= 3.9 (développé sous 3.12)
+  - Python >= 3.10 (développé sous 3.12)
   - Un navigateur web moderne
 
 ## Installation

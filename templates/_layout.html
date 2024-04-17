@@ -4,9 +4,9 @@
     'alternateName': 'LAN',
     'description': motto,
     'slogan': motto,
-    'url': url('', absolute=True),
-    'image': url('/images/logo_256.png', absolute=True),
-    'logo': url('/images/logo_256.png', absolute=True),
+    'url': absurl('/'),
+    'image': absurl('/images/logo_256.png'),
+    'logo': absurl('/images/logo_256.png'),
     'foundingDate': team_founded.isoformat(),
 } %}
 
@@ -30,6 +30,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light dark">
     <meta name="description" content="{% block description %}{{ motto }}{% endblock %}">
+    <meta name="generator" content="{{ __generator__ }}">
 
     <meta property="og:type" content="website">
 
@@ -40,14 +41,14 @@
     <meta property="og:site_name" content="{{ team_name }}">
     <meta property="og:title" content="{{ self.title() or team_name }}">
     <meta property="og:description" content="{{ self.description() }}">
-    <meta property="og:image" content="{% block image %}{{ url('/images/logo_256.png', absolute=True) }}{% endblock %}">
+    <meta property="og:image" content="{% block image %}{{ absurl('/images/logo_256.png') }}{% endblock %}">
     <meta property="og:locale" content="fr_FR">
 
     {% if self.canonical_url() %}
         <link rel="canonical" href="{{ self.canonical_url() }}">
     {% endif %}
 
-    <link rel="icon" href="{{ url('/favicon.ico') }}" sizes="32x32 48x48">
+    <link rel="icon" href="/favicon.ico" sizes="32x32 48x48">
 
     {% if self.jsonld_schema() %}
         <script type="application/ld+json">{% block jsonld_schema %}{% endblock %}</script>
@@ -55,12 +56,14 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.0.6/css/pico.orange.min.css">
     {% block cssfiles %}{% endblock %}
+
+    {% block head %}{% endblock %}
 </head>
 <body>
     <header class="container">
-        <a href="{{ url('/') }}"><img src="{{ url('/images/logo_120.png') }}" alt="Logo de la team {{ team_name }}" width="120" height="120"></a>
-        <div class="site-name">
-            <a href="{{ url('/') }}">{{ team_name }}</a>
+        <a href="/"><img src="/images/logo_120.png" alt="Logo de la team {{ team_name }}" width="120" height="120"></a>
+        <div>
+            <a href="/">{{ team_name }}</a>
             <div>{{ motto }}</div>
         </div>
     </header>
@@ -75,12 +78,12 @@
 
     <footer class="container">
         <div class="text-center">
-            © {{ today.year }} <a href="https://epoc.fr"><img src="{{ url('/images/epoc.png') }}" alt="Logo de Maxime &quot;Epoc&quot; Gross" width="24" height="24"></a> <a href="https://epoc.fr/">Maxime "Epoc" Gross</a> et <a href="https://github.com/Les-Aventuriers-Numeriques/team-lan.org/graphs/contributors">contributeurs</a>
+            © {{ now.year }} <a href="https://epoc.fr"><img src="/images/epoc.png" alt="Logo de Maxime &quot;Epoc&quot; Gross" width="24" height="24"></a> <a href="https://epoc.fr/">Maxime "Epoc" Gross</a> et <a href="https://github.com/Les-Aventuriers-Numeriques/team-lan.org/graphs/contributors">contributeurs</a>
         </div>
 
         <div>
             {% for social_link_icon, social_link_url in social_links %}
-                <a href="{{ social_link_url }}">{{ icon(social_link_icon) }}</a>
+                <a href="{{ social_link_url }}">{{ embed('icons/' + social_link_icon + '.svg') }}</a>
             {% endfor %}
         </div>
     </footer>

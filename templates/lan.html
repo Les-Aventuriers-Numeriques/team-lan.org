@@ -6,7 +6,7 @@
 
 {% block description %}Infos à propos de la LAN annuelle organisée par la team {{ team_name }}{% endblock %}
 
-{% block canonical_url %}{{ url('/lan', absolute=True) }}{% endblock %}
+{% block canonical_url %}{{ absurl('/lan') }}{% endblock %}
 
 {% block jsonld_schema -%}
     {{ base_jsonld_schema|dictmerge({
@@ -39,7 +39,7 @@
     <section class="info">
         <article>
             <header>Quand ?</header>
-            <p>Du {{ start_date.day if start_date.month == end_date.month or start_date.strftime('%d %B') }} au {{ end_date.strftime('%d %B %Y') }}.</p>
+            <p>Du {{ start_date.day if start_date.month == end_date.month or start_date|dateformat('d MMMM') }} au {{ end_date|dateformat('long') }}.</p>
             <p class="mb-0">Aucune obligation de présence évidemment : vous venez et repartez quand vous voulez.</p>
         </article>
         <article>

@@ -34,17 +34,17 @@ body > header a img {
     border-radius: var(--pico-border-radius);
 }
 
-body > header > .site-name {
+body > header > div {
     text-align: center;
 }
 
-body > header > .site-name > a {
+body > header > div > a {
     font-weight: 700;
     font-size: 2rem;
     line-height: 1.125;
 }
 
-body > header > .site-name > div {
+body > header > div > div {
     color: var(--pico-muted-color);
     font-size: 1rem;
 }
@@ -55,7 +55,7 @@ body > header > .site-name > div {
         justify-content: start;
     }
 
-    body > header > .site-name {
+    body > header > div {
         text-align: left;
     }
 }
