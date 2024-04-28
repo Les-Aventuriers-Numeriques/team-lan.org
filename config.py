@@ -59,7 +59,6 @@ CONTEXTS = [
             'name': 'Rully',
             'url': 'https://maps.app.goo.gl/5Azz9MJbAin44MUt6',
         },
-        'lan_games': [],
     }),
 ]
 

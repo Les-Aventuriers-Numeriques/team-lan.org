@@ -59,21 +59,6 @@
             <header>Combien ?</header>
             <p class="mb-0">Les frais (location des lieux, nourriture, boissons et une partie des frais de déplacement de joueurs qui viennent de très loin) sont répartis équitablement entre tous les participants.</p>
         </article>
-        <article class="lan-games">
-            <header>Quels jeux ?</header>
-
-            {% if lan_games %}
-                <div class="games">
-                    {% with games = lan_games %}
-                        {% include '_games.html' %}
-                    {% endwith %}
-                </div>
-
-                <p class="mb-0">Cette liste n'est évidemment pas figée ni exhaustive, rien n'empêche plusieurs joueurs de lancer spontanément une partie sur un jeu qui n'est pas listé.</p>
-            {% else %}
-                <p class="mb-0">À définir.</p>
-            {% endif %}
-        </article>
     </section>
 
     <section class="mb-0">

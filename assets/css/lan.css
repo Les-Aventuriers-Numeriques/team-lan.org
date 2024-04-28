@@ -16,10 +16,6 @@ body > main .info > * {
     margin-bottom: 0;
 }
 
-body > main .info > .lan-games {
-    grid-column: 1 / -1;
-}
-
 @media (min-width: 1024px) {
     body > main .info {
         grid-template-columns: repeat(2, 1fr);
