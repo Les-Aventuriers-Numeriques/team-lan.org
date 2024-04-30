@@ -132,13 +132,13 @@ body > footer {
     border-top: var(--pico-border-width) solid var(--pico-muted-border-color);
 }
 
-body > footer > *:first-child {
-    font-size: 0.7em;
-}
-
-body > footer > *:first-child a {
+body > footer a {
     --pico-color: var(--pico-muted-color);
     --pico-underline: var(--pico-muted-color);
+}
+
+body > footer > *:first-child {
+    font-size: 0.7em;
 }
 
 body > footer > *:last-child {
