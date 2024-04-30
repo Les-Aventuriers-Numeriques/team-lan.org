@@ -122,6 +122,7 @@ body > main .games img {
  * Pied de page */
 
 body > footer {
+    color: var(--pico-muted-color);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -133,6 +134,11 @@ body > footer {
 
 body > footer > *:first-child {
     font-size: 0.7em;
+}
+
+body > footer > *:first-child a {
+    --pico-color: var(--pico-muted-color);
+    --pico-underline: var(--pico-muted-color);
 }
 
 body > footer > *:last-child {
