@@ -39,7 +39,6 @@ body > main .previously details > div {
     row-gap: var(--pico-grid-row-gap);
 }
 
-
 @media (min-width: 1024px) {
     body > main .previously details > div {
         flex-direction: row;
