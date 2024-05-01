@@ -21,3 +21,27 @@ body > main .info > * {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
+/************************************************************************
+ * Précédentes éditions */
+
+body > main .previously img {
+    border: var(--pico-border-width) solid var(--pico-muted-border-color);
+    border-radius: var(--pico-border-radius);
+}
+
+body > main .previously details > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    column-gap: var(--pico-grid-column-gap);
+    row-gap: var(--pico-grid-row-gap);
+}
+
+
+@media (min-width: 1024px) {
+    body > main .previously details > div {
+        flex-direction: row;
+    }
+}
