@@ -39,5 +39,4 @@ jobs:
           BASE_URL: ${{ vars.BASE_URL }}
           MINIFY_XML: ${{ vars.MINIFY_XML }}
           MINIFY_JSON: ${{ vars.MINIFY_JSON }}
-        run: |
-          staticjinjaplus publish
+        run: staticjinjaplus publish
