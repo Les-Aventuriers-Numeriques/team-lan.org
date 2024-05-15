@@ -21,11 +21,13 @@ CONTEXTS = [
         'games_being_played': [
             (1158310, 'Crusader Kings III'),
             (1239080, 'Door Kickers 2'),
+            (983870, 'FOUNDRY'),
             (394360, 'Hearts of Iron IV'),
             (686810, 'Hell Let Loose'),
             (232090, 'Killing Floor 2'),
             (578080, 'PUBG'),
             (526870, 'Satisfactory'),
+            (236390, 'War Thunder'),
         ],
         'previously_played_games': [
             (1015140, '10 Miles To Safety'),
@@ -47,7 +49,6 @@ CONTEXTS = [
             (270150, 'RUNNING WITH RIFLES'),
             (393380, 'Squad'),
             (377300, 'Thunder Tier One'),
-            (236390, 'War Thunder'),
         ],
     }),
     (r'lan\.html', {
