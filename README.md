@@ -5,7 +5,7 @@ Le [site web principal](https://team-lan.org/) de la team multigaming Les Aventu
 [![Publication](https://github.com/Les-Aventuriers-Numeriques/team-lan.org/actions/workflows/publish.yml/badge.svg)](https://github.com/Les-Aventuriers-Numeriques/team-lan.org/actions/workflows/publish.yml)
 
 Il s'agit d'un site statique simple généré à partir de templates [Jinja](https://jinja.palletsprojects.com/en/3.1.x/) par
-[staticjinjaplus]([https://github.com/EpocDotFr/staticjinjaplus](https://epocdotfr.github.io/staticjinjaplus/)).
+[staticjinjaplus](https://epocdotfr.github.io/staticjinjaplus/).
 
 ## Prérequis
 
