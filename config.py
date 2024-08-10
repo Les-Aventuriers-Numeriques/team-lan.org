@@ -28,6 +28,7 @@ CONTEXTS = [
             (578080, 'PUBG'),
             (526870, 'Satisfactory'),
             (236390, 'War Thunder'),
+            (699130, 'World War Z'),
         ],
         'previously_played_games': [
             (1015140, '10 Miles To Safety'),
