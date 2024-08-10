@@ -1,3 +1,4 @@
-staticjinjaplus==2.0.1
-Babel==2.15.0
+staticjinjaplus==2.0.2
+Babel==2.16.0
 pytz==2024.1
+cssutils~=2.10
