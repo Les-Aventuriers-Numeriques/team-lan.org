@@ -38,4 +38,4 @@ jobs:
           MINIFY_JSON: ${{ vars.MINIFY_JSON }}
         run: |
           staticjinjaplus publish
-          rsync --delete -pthrvz -c -e "ssh -p 22" output ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }}:${{ vars.SSH_PATH }}
+          rsync --delete -pthrvz -c -e "ssh -p 22" output/ ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }}:${{ vars.SSH_PATH }}
