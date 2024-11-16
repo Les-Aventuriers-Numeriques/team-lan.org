@@ -11,8 +11,8 @@ WEBASSETS_BUNDLES = [
     ('css_lan', ('css/base.css', 'css/lan.css'), {'filters': 'rcssmin', 'output': 'css/lan.min.css'}),
 ]
 
-lan_current_attendees = 8
-lan_max_attendees = 10
+lan_current_attendees = None # 8
+lan_max_attendees = None # 10
 team_name = 'Les Aventuriers Numériques'
 motto = 'Une team multigaming francophone et conviviale'
 
@@ -55,12 +55,9 @@ CONTEXTS = [
     (r'lan\.html', {
         'current_attendees': lan_current_attendees,
         'max_attendees': lan_max_attendees,
-        'start_date': date(2024, 11, 7),
-        'end_date': date(2024, 11, 11),
-        'location': {
-            'name': 'Rully',
-            'url': 'https://maps.app.goo.gl/5Azz9MJbAin44MUt6',
-        },
+        'start_date': None, # date(2024, 11, 7),
+        'end_date': None, # date(2024, 11, 11),
+        'location': None, # {'name': 'Rully', 'url': 'https://maps.app.goo.gl/5Azz9MJbAin44MUt6'}
     }),
 ]
 
