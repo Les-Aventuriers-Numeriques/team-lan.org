@@ -20,7 +20,6 @@ CONTEXTS = [
             (400750, 'Call to Arms - Gates of Hell'),
             (1239080, 'Door Kickers 2'),
             (2507950, 'Delta Force'),
-            (983870, 'FOUNDRY'),
             (394360, 'Hearts of Iron IV'),
             (686810, 'Hell Let Loose'),
             (232090, 'Killing Floor 2'),
@@ -45,7 +44,8 @@ CONTEXTS = [
             (248610, 'Door Kickers'),
             (1250, 'Killing Floor'),
             ('https://losangelesmod.com/', 'lamod', 'Los Angeles Mod'),
-            (244450, 'Men of War: Assault Squad 2'),
+             ('https://www.minecraft.net/fr-fr', 'mc', 'Minecraft'),
+           (244450, 'Men of War: Assault Squad 2'),
             (453090, 'Parkitect'),
             (233450, 'Prison Architect'),
             ('https://www.realitymod.com/', 'pr', 'Project Reality: Battlefield 2'),
@@ -54,11 +54,11 @@ CONTEXTS = [
         ],
     }),
     (r'lan\.html', {
-        'current_attendees': None, # 5
-        'max_attendees': None, # 14
-        'start_date': None, # date(2025, 11, 7),
-        'end_date': None, # date(2025, 11, 12),
-        'location': None, # {'name': 'Courtenay', 'url': 'https://maps.app.goo.gl/1pBpnWsVrg65qyNn9'}
+        'current_attendees': 5,
+        'max_attendees': 14,
+        'start_date': date(2025, 11, 7),
+        'end_date': date(2025, 11, 12),
+        'location': {'name': 'Courtenay', 'url': 'https://maps.app.goo.gl/1pBpnWsVrg65qyNn9'},
     }),
 ]
 
