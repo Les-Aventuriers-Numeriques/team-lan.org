@@ -54,7 +54,7 @@ CONTEXTS = [
         ],
     }),
     (r'lan\.html', {
-        'current_attendees': 5,
+        'current_attendees': 6,
         'max_attendees': 14,
         'start_date': date(2025, 11, 7),
         'end_date': date(2025, 11, 12),
