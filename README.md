@@ -11,8 +11,7 @@ Le [site institutionnel](https://team-lan.org/) de la team multigaming Les Avent
 
 [![Publication](https://github.com/Les-Aventuriers-Numeriques/team-lan.org/actions/workflows/publish.yml/badge.svg)](https://github.com/Les-Aventuriers-Numeriques/team-lan.org/actions/workflows/publish.yml)
 
-Il s'agit d'un site statique simple généré à partir de templates [Jinja](https://jinja.palletsprojects.com/en/3.1.x/) par
-[staticjinjaplus](https://epocdotfr.github.io/staticjinjaplus/).
+Il s'agit d'un site statique généré par [Pelican](https://getpelican.com/).
 
 ## Prérequis
 
@@ -28,6 +27,9 @@ Clonez ce dépôt, puis le `pip install -r requirements.txt` habituel.
 Configuration du `VirtualHost` :
 
 ```apacheconf
+AddType application/rss+xml .rss
+AddType application/atom+xml .atom
+
 ErrorDocument 404 /404.html
 
 RewriteEngine On
