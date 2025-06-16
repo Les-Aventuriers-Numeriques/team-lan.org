@@ -15,6 +15,26 @@ def finalized(sender):
     except FileNotFoundError:
         pass
 
+    # Suppression suffixes .html
+    filenames = [
+        sender.settings.get('ARCHIVES_SAVE_AS'),
+        sender.settings.get('CATEGORIES_SAVE_AS'),
+        sender.settings.get('TAGS_SAVE_AS'),
+    ]
+
+    for filename in filenames:
+        try:
+            with open(os.path.join(sender.output_path, filename), 'r+', encoding='utf-8') as f:
+                new_filename = filename.removesuffix('index.html').removesuffix('.html')
+
+                content = f.read().replace(filename, new_filename)
+
+                f.seek(0)
+                f.write(content)
+                f.truncate()
+        except FileNotFoundError:
+            pass
+
 
 def register():
     signals.finalized.connect(finalized)
