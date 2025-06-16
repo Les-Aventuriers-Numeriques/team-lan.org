@@ -2,3 +2,5 @@ pelican[markdown]~=4.11
 pelican-seo~=1.4
 pelican-sitemap~=1.2
 pelican-htmlmin~=2.0
+pelican-webassets~=2.1
+rcssmin~=1.2

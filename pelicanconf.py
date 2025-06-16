@@ -104,6 +104,12 @@ HTMLMIN_OPTIONS = {
     'remove_comments': True
 }
 
+# pelican-webassets
+
+WEBASSETS_BUNDLES = (
+     ('css_app', ('css/app.css', ), {'filters': 'cssutils', 'output': 'css/app.min.css'}),
+)
+
 # ----------------------------------------------------------
 # Pagination
 
