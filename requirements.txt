@@ -1,4 +1,4 @@
-staticjinjaplus~=3.0
-Babel~=2.16
-pytz~=2025.0
-rcssmin~=1.1
+pelican[markdown]~=4.11
+pelican-seo~=1.4
+pelican-sitemap~=1.2
+pelican-htmlmin~=2.0
