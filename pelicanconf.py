@@ -4,8 +4,8 @@ from datetime import date
 # Métadonnées
 
 SITENAME = 'Les Aventuriers Numériques'
-SITESUBTITLE = 'Le site perso de Maxime "Epoc" Gross'
-AUTHOR = 'Maxime "Epoc" Gross'
+SITESUBTITLE = 'Une team multigaming francophone et conviviale'
+AUTHOR = 'Le staff'
 
 DEFAULT_METADATA = {
     'status': 'draft',
