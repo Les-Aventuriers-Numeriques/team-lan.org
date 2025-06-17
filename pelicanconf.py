@@ -124,3 +124,9 @@ PAGINATION_PATTERNS = (
 # Thème
 
 THEME = './theme'
+
+SOCIAL = (
+    ('discord', 'https://discord.gg/vQYv4MfQf8'),
+    ('steam', 'https://steamcommunity.com/groups/Les-Aventuriers-Numeriques'),
+    ('github', 'https://github.com/Les-Aventuriers-Numeriques'),
+)
