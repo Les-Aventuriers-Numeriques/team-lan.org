@@ -3,4 +3,5 @@ pelican-seo~=1.4
 pelican-sitemap~=1.2
 pelican-htmlmin~=2.0
 pelican-webassets~=2.1
+pymdown-extensions~=10.15
 rcssmin~=1.2

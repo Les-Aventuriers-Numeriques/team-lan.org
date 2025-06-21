@@ -110,6 +110,23 @@ WEBASSETS_BUNDLES = (
      ('css_app', ('css/app.css', ), {'filters': 'cssutils', 'output': 'css/app.min.css'}),
 )
 
+# pymdown-extensions
+
+MARKDOWN = {
+    'extension_configs': {
+        'markdown.extensions.extra': {},
+        'markdown.extensions.meta': {},
+        'markdown.extensions.toc': {'permalink': True, 'permalink_title': 'Lien permanent', 'title': 'Table des matières'},
+        'markdown.extensions.smarty': {},
+        'markdown.extensions.sane_lists': {},
+        'pymdownx.tilde': {'subscript': False},
+        'pymdownx.blocks.admonition': {},
+        'pymdownx.blocks.caption': {},
+        'pymdownx.blocks.details': {},
+    },
+    'output_format': 'html5',
+}
+
 # ----------------------------------------------------------
 # Pagination
 
@@ -123,7 +140,7 @@ PAGINATION_PATTERNS = (
 # ----------------------------------------------------------
 # Thème
 
-THEME = './theme'
+# THEME = './theme'
 
 SOCIAL = (
     ('discord', 'https://discord.gg/vQYv4MfQf8'),
