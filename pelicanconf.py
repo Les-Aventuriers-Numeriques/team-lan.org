@@ -76,7 +76,7 @@ DATE_FORMATS = {
 # ----------------------------------------------------------
 # Catégories
 
-DEFAULT_CATEGORY = 'divers'
+DEFAULT_CATEGORY = 'Divers'
 
 # ----------------------------------------------------------
 # Plugins - tierce-partie
