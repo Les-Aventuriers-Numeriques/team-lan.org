@@ -140,7 +140,7 @@ PAGINATION_PATTERNS = (
 # ----------------------------------------------------------
 # Thème
 
-# THEME = './theme'
+THEME = './theme'
 
 SOCIAL = (
     ('discord', 'https://discord.gg/vQYv4MfQf8'),
