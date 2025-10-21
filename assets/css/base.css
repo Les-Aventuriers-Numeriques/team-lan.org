@@ -33,11 +33,6 @@ body > header a {
     text-decoration: none;
 }
 
-body > header a img {
-    border: var(--pico-border-width) solid var(--pico-muted-border-color);
-    border-radius: var(--pico-border-radius);
-}
-
 body > header > div {
     text-align: center;
 }

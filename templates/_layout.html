@@ -5,8 +5,8 @@
     'description': motto,
     'slogan': motto,
     'url': absurl('/'),
-    'image': absurl('/images/logo_256.png'),
-    'logo': absurl('/images/logo_256.png'),
+    'image': absurl('/images/logo_256_light.png'),
+    'logo': absurl('/images/logo_256_light.png'),
     'foundingDate': team_founded.isoformat(),
 } %}
 
@@ -41,7 +41,7 @@
     <meta property="og:site_name" content="{{ team_name }}">
     <meta property="og:title" content="{{ self.title() or team_name }}">
     <meta property="og:description" content="{{ self.description() }}">
-    <meta property="og:image" content="{% block image %}{{ absurl('/images/logo_256.png') }}{% endblock %}">
+    <meta property="og:image" content="{% block image %}{{ absurl('/images/logo_256_light.png') }}{% endblock %}">
     <meta property="og:locale" content="fr_FR">
 
     {% if self.canonical_url() %}
@@ -61,7 +61,12 @@
 </head>
 <body>
     <header class="container">
-        <a href="/"><img src="/images/logo_120.png" alt="Logo de la team {{ team_name }}" width="120" height="120"></a>
+        <a href="/">
+            <picture>
+                <source media="(prefers-color-scheme: dark)" srcset="/images/logo_120_dark.png" width="120" height="120">
+                <img src="/images/logo_120_light.png" alt="Logo de la team {{ team_name }}" width="120" height="120">
+            </picture>
+        </a>
         <div>
             <a href="/">{{ team_name }}</a>
             <div>{{ motto }}</div>
