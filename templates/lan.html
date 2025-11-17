@@ -2,7 +2,7 @@
 
 {% from '_layout.html' import jsonld_organization, base_jsonld_schema with context %}
 
-{% block title %}3ème LAN annuelle{% endblock %}
+{% block title %}4ème LAN annuelle{% endblock %}
 
 {% block description %}Infos à propos de la LAN annuelle organisée par la team {{ team_name }}.{% endblock %}
 
@@ -35,7 +35,7 @@
 
 {% block content %}
     {% if start_date and end_date and current_attendees and max_attendees %}
-        <p>Comme chaque année depuis 2023, nous organisons une LAN party privée dont voici les informations à propos de l'édition de 2025. <strong>Il n'est possible de la joindre que sur notre invitation expresse</strong>.</p>
+        <p>Comme chaque année depuis 2023, nous organisons une LAN party privée dont voici les informations à propos de l'édition de 2026. <strong>Il n'est possible de la joindre que sur notre invitation expresse</strong>.</p>
 
         <section class="info">
             <article>
@@ -63,11 +63,25 @@
             </article>
         </section>
     {% else %}
-        <p>Les informations de l'édition 2025 de notre LAN party privée seront disponibles plus tard. En attendant, vous trouverez ci-dessous quelques informations sur nos précédentes éditions.</p>
+        <p>Les informations de l'édition 2026 de notre LAN party privée seront disponibles plus tard. En attendant, vous trouverez ci-dessous quelques informations sur nos précédentes éditions.</p>
     {% endif %}
 
     <section class="previously mb-0">
         <h2>Précédentes éditions</h2>
+
+        <details>
+            <summary role="button" class="outline secondary">2025</summary>
+
+            <div>
+                <img src="/images/lans/2025.png" width="600" height="450" alt="Quelques participants de l'édition 2025 : offic3r_3dwards, Korgorr, Mattchaby, DrMastock et Epoc">
+
+                <div>
+                    <p>Pour cette troisième édition, nous avons posé nos PC du 7 au 12 novembre à <a href="https://maps.app.goo.gl/1pBpnWsVrg65qyNn9">Courtenay</a> (entre Montargis et Sens).</p>
+                    <p>Nous étions 8 joueurs, et avions joué à Quake III Arena, RUNNING WITH RIFLES, Killing Floor 2, RV There Yet?, Jump Space, Dale & Dawson Stationery Supplies, PEAK, Gang Beasts, Drawful 2, Rocket League, Pummel Party, Act of War: Direct Action, It's Quizz Time, et pour la première fois à un jeu de rôle créé par Mattchaby du nom de Lords and Rebels.</p>
+                    <p class="mb-0">Nous avions loué une maison entière avec vrais babyfoot et billard (et un lit chacun !), mais l'emplacement n'était pas top.</p>
+                </div>
+            </div>
+        </details>
 
         <details>
             <summary role="button" class="outline secondary">2024</summary>
