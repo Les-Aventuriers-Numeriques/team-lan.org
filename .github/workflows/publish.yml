@@ -31,11 +31,11 @@ jobs:
           echo "${{ secrets.SSH_KEY }}" >> $HOME/.ssh/id_rsa
           chmod 400 $HOME/.ssh/id_rsa
           ssh-keyscan -t rsa ${{ vars.SSH_HOST }} >> $HOME/.ssh/known_hosts
-      - name: Génération et déploiement du site
+      - name: Génération du site
         env:
           BASE_URL: ${{ vars.BASE_URL }}
           MINIFY_XML: ${{ vars.MINIFY_XML }}
           MINIFY_JSON: ${{ vars.MINIFY_JSON }}
-        run: |
-          staticjinjaplus publish
-          rsync --delete -pthrvz -c -e "ssh -p 22" output/ ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }}:${{ vars.SSH_PATH }}
+        run: staticjinjaplus publish
+      - name: Déploiement du site
+        run: rsync --delete -pthrvz -c -e "ssh -p 22" output/ ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }}:${{ vars.SSH_PATH }}
