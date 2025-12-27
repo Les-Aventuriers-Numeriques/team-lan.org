@@ -37,6 +37,7 @@ CONTEXTS = [
             ('Company of Heroes 2', 'https://store.steampowered.com/app/231430', 'https://images.igdb.com/igdb/image/upload/t_cover_big/coaayw.png'),
             ('Company of Heroes: Blitzkrieg Mod', 'https://store.steampowered.com/app/681590/Company_of_Heroes_Blitzkrieg_Mod/', 'https://images.igdb.com/igdb/image/upload/t_cover_big/co8gzk.png'),
             ('Crusader Kings III', 'https://store.steampowered.com/app/1158310', 'https://images.igdb.com/igdb/image/upload/t_cover_big/co90uu.png'),
+            ('Delta Force', 'https://store.steampowered.com/app/2507950', 'https://images.igdb.com/igdb/image/upload/t_cover_big/coa98y.png'),
             ('Door Kickers', 'https://store.steampowered.com/app/248610', 'https://images.igdb.com/igdb/image/upload/t_cover_big/co1r1y.png'),
             ('Hell Let Loose', 'https://store.steampowered.com/app/686810', 'https://images.igdb.com/igdb/image/upload/t_cover_big/co6sqr.png'),
             ('Killing Floor', 'https://store.steampowered.com/app/1250', 'https://images.igdb.com/igdb/image/upload/t_cover_big/co2sn9.png'),
