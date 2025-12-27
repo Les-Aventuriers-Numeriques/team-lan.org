@@ -4,17 +4,10 @@
     <div class="games">
         {% with games = games %}
             {% for game in games %}
-                {% if game|length == 2 %} {# Jeu Steam #}
-                    {% set appid, name = game %}
-                    {% set a_href = 'https://store.steampowered.com/app/{}'.format(appid) %}
-                    {% set img_src = 'https://cdn.cloudflare.steamstatic.com/steam/apps/{}/capsule_231x87.jpg'.format(appid) %}
-                {% elif game|length == 3 %} {# Jeu personnalisé #}
-                    {% set a_href, image_name, name = game %}
-                    {% set img_src = '/images/games/{}.png'.format(image_name) %}
-                {% endif %}
+                {% set name, a_href, img_src = game %}
 
                 <a href="{{ a_href }}" target="_blank" data-tooltip="{{ name }}">
-                    <img src="{{ img_src }}" alt="Illustration {{ name }}" width="231" height="87">
+                    <img src="{{ img_src }}" alt="Illustration {{ name }}">
                 </a>
             {% endfor %}
         {% endwith %}
