@@ -42,6 +42,7 @@ CONTEXTS = [
             ('Hell Let Loose', 'https://store.steampowered.com/app/686810', 'https://images.igdb.com/igdb/image/upload/t_cover_big/co6sqr.png'),
             ('Killing Floor', 'https://store.steampowered.com/app/1250', 'https://images.igdb.com/igdb/image/upload/t_cover_big/co2sn9.png'),
             ('Killing Floor 2', 'https://store.steampowered.com/app/232090', 'https://images.igdb.com/igdb/image/upload/t_cover_big/co2coc.png'),
+            ('Los Angeles Mod', 'https://losangelesmod.com/', 'https://images.igdb.com/igdb/image/upload/t_cover_big/coa7tz.png'),
             ('Men of War: Assault Squad 2', 'https://store.steampowered.com/app/244450', 'https://images.igdb.com/igdb/image/upload/t_cover_big/co28sc.png'),
             ('Minecraft: Java Edition', 'https://minecraft.net/', 'https://images.igdb.com/igdb/image/upload/t_cover_big/coa77e.png'),
             ('Prison Architect', 'https://store.steampowered.com/app/233450', 'https://images.igdb.com/igdb/image/upload/t_cover_big/co62ch.png'),
