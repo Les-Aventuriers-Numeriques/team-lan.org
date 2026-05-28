@@ -1,4 +1,4 @@
-staticjinjaplus~=3.2
+staticjinjaplus~=3.3
 Babel~=2.18
 pytz~=2026.2
 rcssmin~=1.1
