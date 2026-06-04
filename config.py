@@ -1,8 +1,7 @@
-from babel.dates import get_timezone, format_date
-from datetime import date, datetime
+from babel.dates import format_date
+from datetime import date
 
 LOCALE = 'fr_FR'
-tzinfo = get_timezone('Europe/Paris')
 
 USE_HTML_EXTENSION = False
 
@@ -72,7 +71,7 @@ JINJA_GLOBALS = {
     ],
     'team_name': team_name,
     'motto': motto,
-    'now': datetime.now(tz=tzinfo),
+    'today': date.today(),
     'team_founded': date(2024, 3, 8),
 }
 
