@@ -42,7 +42,7 @@
     <meta property="og:title" content="{{ self.title() or team_name }}">
     <meta property="og:description" content="{{ self.description() }}">
     <meta property="og:image" content="{% block image %}{{ absurl('/images/logo_256_light.png') }}{% endblock %}">
-    <meta property="og:locale" content="fr_FR">
+    <meta property="og:locale" content="{{ LOCALE }}">
 
     {% if self.canonical_url() %}
         <link rel="canonical" href="{{ self.canonical_url() }}">

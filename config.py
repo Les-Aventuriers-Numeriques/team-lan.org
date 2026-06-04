@@ -1,7 +1,7 @@
 from babel.dates import get_timezone, format_date
 from datetime import date, datetime
 
-locale = 'fr_FR'
+LOCALE = 'fr_FR'
 tzinfo = get_timezone('Europe/Paris')
 
 USE_HTML_EXTENSION = False
@@ -78,7 +78,7 @@ JINJA_GLOBALS = {
 
 
 def dateformat(*args, **kwargs):
-    return format_date(*args, **kwargs, locale=locale)
+    return format_date(*args, **kwargs, locale=LOCALE)
 
 
 JINJA_FILTERS = {
