@@ -17,11 +17,12 @@ Il s'agit d'un site statique simple généré à partir de templates [Jinja](htt
 ## Prérequis
 
   - Python >= 3.10 (développé sous 3.14)
+  - [Pipenv](https://pipenv.pypa.io/en/latest/)
   - Un navigateur web moderne
 
 ## Installation
 
-Clonez ce dépôt, puis le `pip install -r requirements.txt` habituel.
+Clonez ce dépôt, puis le `pipenv install --dev` habituel.
 
 ## Configuration d'Apache
 

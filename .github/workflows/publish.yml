@@ -19,12 +19,13 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: '3.14'
-          cache: 'pip'
-          cache-dependency-path: 'requirements*.txt'
+          cache: 'pipenv'
       - name: Mise à jour de pip
         run: python -m pip install --upgrade pip
+      - name: Installation de pipenv
+        run: pip install pipenv
       - name: Installation des dépendances
-        run: pip install -r requirements.txt
+        run: pipenv install --deploy
       - name: Installation de la clef SSH
         run: |
           mkdir $HOME/.ssh
@@ -36,6 +37,6 @@ jobs:
           BASE_URL: ${{ vars.BASE_URL }}
           MINIFY_XML: ${{ vars.MINIFY_XML }}
           MINIFY_JSON: ${{ vars.MINIFY_JSON }}
-        run: staticjinjaplus publish
+        run: pipenv run staticjinjaplus publish
       - name: Déploiement du site
         run: rsync --delete -pthrvz -c -e "ssh -p 22" output/ ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }}:${{ vars.SSH_PATH }}
