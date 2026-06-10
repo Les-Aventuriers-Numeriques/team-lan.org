@@ -9,24 +9,29 @@
 {% block canonical_url %}{{ absurl('/lan') }}{% endblock %}
 
 {% block jsonld_schema -%}
-    {{ base_jsonld_schema|dictmerge({
-        'about': {
-            '@type': 'SocialEvent',
-            'name': self.title(),
-            'description': self.title(),
-            'image': self.image(),
-            'eventAttendanceMode': 'https://schema.org/OfflineEventAttendanceMode',
-            'organizer': jsonld_organization,
-            'startDate': start_date.isoformat() if start_date else None,
-            'endDate': end_date.isoformat() if end_date else None,
-            'location': {
-                '@type': 'City',
-                'name': location.name,
-            } if location else None,
-            'maximumAttendeeCapacity': max_attendees or None,
-            'remainingAttendeeCapacity': max_attendees - current_attendees if max_attendees and current_attendees else None,
-        },
-    })|tojsonm }}
+    {% if start_date and end_date and current_attendees and max_attendees -%}
+        {{ base_jsonld_schema|dictmerge({
+            'about': {
+                '@type': 'SocialEvent',
+                'name': self.title(),
+                'description': self.title(),
+                'image': self.image(),
+                'eventAttendanceMode': 'https://schema.org/MixedEventAttendanceMode',
+                'organizer': jsonld_organization,
+                'startDate': start_date.isoformat(),
+                'endDate': end_date.isoformat(),
+                'location': {
+                    '@type': 'City',
+                    'name': location.name,
+                },
+                'eventStatus': 'https://schema.org/EventScheduled',
+                'maximumAttendeeCapacity': max_attendees,
+                'remainingAttendeeCapacity': max_attendees - current_attendees,
+            },
+        })|tojsonm }}
+    {%- else -%}
+        {{ base_jsonld_schema|tojsonm }}
+    {%- endif %}
 {%- endblock %}
 
 {% block cssfiles %}
