@@ -52,7 +52,7 @@
                 <header>Où ?</header>
 
                 {% if location %}
-                    <p class="mb-0">Ça se passera à <a href="{{ location.url }}">{{ location.name }}</a>.</p>
+                    <p class="mb-0">Ça se passera à <a href="{{ location.url }}" target="_blank">{{ location.name }}</a>.</p>
                  {% else %}
                     <p class="mb-0">À définir.</p>
                 {% endif %}
