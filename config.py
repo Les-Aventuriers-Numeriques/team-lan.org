@@ -55,11 +55,11 @@ CONTEXTS = [
         ],
     }),
     (r'lan\.html', {
-        'current_attendees': None, # 8,
-        'max_attendees': None, # 14,
-        'start_date': None, # date(2025, 11, 7),
-        'end_date': None, # date(2025, 11, 12),
-        'location': None, # {'name': 'Courtenay', 'url': 'https://maps.app.goo.gl/1pBpnWsVrg65qyNn9'},
+        'current_attendees': 5,
+        'max_attendees': 14,
+        'start_date': date(2026, 10, 17),
+        'end_date': date(2026, 10, 21),
+        'location': {'name': 'Saint-Maurice-sur-Fessard', 'url': 'https://maps.app.goo.gl/7FxjhHUfmrCRbhKm7'},
     }),
 ]
 
