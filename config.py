@@ -5,9 +5,13 @@ LOCALE = 'fr_FR'
 
 USE_HTML_EXTENSION = False
 
+WEBASSETS_CONFIG = {
+    'LIBSASS_INCLUDES': ['node_modules']
+}
+
 WEBASSETS_BUNDLES = [
-    ('css_base', ('css/base.css',), {'filters': 'rcssmin', 'output': 'css/base.css'}),
-    ('css_lan', ('css/base.css', 'css/lan.css'), {'filters': 'rcssmin', 'output': 'css/lan.css'}),
+    ('css_base', ('scss/base.scss',), {'filters': 'libsass,rcssmin', 'output': 'css/base.css', 'depends': '**/*.scss'}),
+    ('css_lan', ('scss/lan.scss',), {'filters': 'libsass,rcssmin', 'output': 'css/lan.css', 'depends': '**/*.scss'}),
 ]
 
 team_name = 'Les Aventuriers Numériques'
