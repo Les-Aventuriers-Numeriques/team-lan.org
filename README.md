@@ -17,7 +17,7 @@ Il s'agit d'un site statique simple généré à partir de templates [Jinja](htt
 ## Prérequis
 
   - Python >= 3.10 (développé sous 3.14)
-  - Node.js et 'importe quel gestionnaire de paquets à la mode actuellement
+  - Node.js et n'importe quel gestionnaire de paquets à la mode actuellement
   - [Pipenv](https://pipenv.pypa.io/en/latest/)
   - Un navigateur web moderne
 
