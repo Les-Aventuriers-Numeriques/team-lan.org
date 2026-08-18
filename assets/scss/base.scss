@@ -1,6 +1,6 @@
-@use "@picocss/pico/scss/pico" with (
-  $theme-color: "orange"
-);
+$theme-color: "orange";
+
+@import "@picocss/pico/scss/pico";
 
 /************************************************************************
  * Styles de base */
