@@ -20,12 +20,19 @@ jobs:
         with:
           python-version: '3.14'
           cache: 'pipenv'
+      - name: Installation de Node 24
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: 'npm'
       - name: Mise à jour de pip
         run: python -m pip install --upgrade pip
       - name: Installation de pipenv
         run: pip install pipenv
-      - name: Installation des dépendances
+      - name: Installation des dépendances Python
         run: pipenv install --deploy
+      - name: Installation des dépendances NPM
+        run: npm install --omit=dev
       - name: Installation de la clef SSH
         run: |
           mkdir $HOME/.ssh

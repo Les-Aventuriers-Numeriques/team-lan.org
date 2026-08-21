@@ -4,9 +4,9 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+rcssmin = "~=1.2.0"
 staticjinjaplus = "~=3.4.0"
 babel = "~=2.18.0"
-rcssmin = "~=1.2.0"
 
 [dev-packages]
 
