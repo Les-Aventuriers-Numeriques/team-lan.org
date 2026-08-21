@@ -4,7 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-libsass = "~=0.23.0"
 rcssmin = "~=1.2.0"
 staticjinjaplus = "~=3.4.0"
 babel = "~=2.18.0"

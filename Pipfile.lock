@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "f846bcb77a81f50bbaaa7a7343e7800347f25dc639f058bfa38960edc2185b39"
+            "sha256": "26903e76a844ebd3b3b6e66c4dc669c3d314f84bde08e065f1d0bf04de79bc12"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -54,19 +54,6 @@
             ],
             "markers": "python_version >= '3.7'",
             "version": "==3.1.6"
-        },
-        "libsass": {
-            "hashes": [
-                "sha256:31e86d92a5c7a551df844b72d83fc2b5e50abc6fbbb31e296f7bebd6489ed1b4",
-                "sha256:34cae047cbbfc4ffa832a61cbb110f3c95f5471c6170c842d3fed161e40814dc",
-                "sha256:4a218406d605f325d234e4678bd57126a66a88841cb95bee2caeafdc6f138306",
-                "sha256:6f209955ede26684e76912caf329f4ccb57e4a043fd77fe0e7348dd9574f1880",
-                "sha256:a2ec85d819f353cbe807432d7275d653710d12b08ec7ef61c124a580a8352f3c",
-                "sha256:ea97d1b45cdc2fc3590cb9d7b60f1d8915d3ce17a98c1f2d4dd47ee0d9c68ce6"
-            ],
-            "index": "pypi",
-            "markers": "python_version >= '3.8'",
-            "version": "==0.23.0"
         },
         "markdown": {
             "hashes": [
