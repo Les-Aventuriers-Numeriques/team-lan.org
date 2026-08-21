@@ -1,17 +1,18 @@
 from babel.dates import format_date
 from datetime import date
+from pathlib import Path
 
 LOCALE = 'fr_FR'
 
 USE_HTML_EXTENSION = False
 
 WEBASSETS_CONFIG = {
-    'LIBSASS_INCLUDES': ['node_modules']
+    'SASS_LOAD_PATHS': [str(Path(__file__).parent / 'node_modules')]
 }
 
 WEBASSETS_BUNDLES = [
-    ('css_base', ('scss/base.scss',), {'filters': 'libsass,rcssmin', 'output': 'css/base.css', 'depends': '**/*.scss'}),
-    ('css_lan', ('scss/lan.scss',), {'filters': 'libsass,rcssmin', 'output': 'css/lan.css', 'depends': '**/*.scss'}),
+    ('css_base', ('scss/base.scss',), {'filters': 'scss,rcssmin', 'output': 'css/base.css', 'depends': '**/*.scss'}),
+    ('css_lan', ('scss/lan.scss',), {'filters': 'scss,rcssmin', 'output': 'css/lan.css', 'depends': '**/*.scss'}),
 ]
 
 team_name = 'Les Aventuriers Numériques'
