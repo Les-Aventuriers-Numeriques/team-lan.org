@@ -7,6 +7,7 @@ LOCALE = 'fr_FR'
 USE_HTML_EXTENSION = False
 
 WEBASSETS_CONFIG = {
+    'SASS_BIN': str(Path(__file__).parent / 'node_modules' / '.bin' / 'sass'),
     'SASS_LOAD_PATHS': [str(Path(__file__).parent / 'node_modules')]
 }
 
