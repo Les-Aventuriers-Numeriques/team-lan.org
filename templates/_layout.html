@@ -97,7 +97,7 @@
 
         <div>
             {% for social_link_icon, social_link_url in social_links %}
-                <a href="{{ social_link_url }}">{{ embed('icons/' + social_link_icon + '.svg') }}</a>
+                <a href="{{ social_link_url }}"><i class="bi bi-{{ social_link_icon }}"></i></a>
             {% endfor %}
         </div>
     </footer>

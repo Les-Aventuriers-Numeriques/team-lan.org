@@ -2,6 +2,10 @@
     $theme-color: "orange"
 );
 
+@use "bootstrap-icons/font/bootstrap-icons" with (
+    $bootstrap-icons-font-dir: "../../fonts/bootstrap-icons"
+);
+
 /************************************************************************
  * Styles de base */
 
@@ -151,9 +155,8 @@ body > footer > *:last-child {
     row-gap: var(--pico-grid-row-gap);
 }
 
-body > footer > *:last-child svg.bi {
-    width: 1.5em;
-    height: 1.5em;
+body > footer > *:last-child .bi {
+    font-size: 1.5em;
 }
 
 @media (min-width: 768px) {
