@@ -39,12 +39,17 @@ ErrorDocument 404 /404.html
 
 RewriteEngine On
 
-RewriteRule (.*)\/index\.html$ $1/ [R=301]
+RewriteCond %{THE_REQUEST} ^[A-Z]+\s[^\s?]*/index(\.html)?[\s?]
+RewriteRule ^(.*/)index(\.html)?$ $1 [R=301,L]
 
-RewriteCond %{THE_REQUEST} ^GET\ (.*)\.html\ HTTP
-RewriteRule (.*)\.html$ $1 [R=301]
+RewriteCond %{THE_REQUEST} ^[A-Z]+\s[^\s?]+\.html[\s?]
+RewriteRule ^(.+)\.html$ $1 [R=301,L]
 
-RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME}.html -f
-RewriteCond %{REQUEST_URI} !/$
-RewriteRule (.*) $1\.html [L]
+RewriteCond %{DOCUMENT_ROOT}$1.html -f
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}index.html !-f
+RewriteRule ^(.+)/$ $1 [R=301,L]
+
+RewriteCond %{REQUEST_URI} !\.html$
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}.html -f
+RewriteRule ^(.*[^/])$ $1.html [L]
 ```
